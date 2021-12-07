@@ -10,7 +10,7 @@ export class TemplateWidgetNasaComponent implements OnInit {
   title = 'NASA Picture of the day';
 
   goNasa() {
-    window.location.href='https://apod.nasa.gov/apod/astropix.html/';
+    window.location.href='https://www.nasa.gov/multimedia/imagegallery/iotd.html';
   }
 
   constructor() { }
