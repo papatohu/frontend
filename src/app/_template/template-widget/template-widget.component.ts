@@ -10,7 +10,7 @@ import { analyzeAndValidateNgModules } from '@angular/compiler';
 export class TemplateWidgetComponent implements OnInit {
 
 
-  //Add ng lin t
+  //Add ng lint
   public WeatherWidget$: WeatherWidget;
 
   constructor(private http: HttpClient) {
@@ -21,14 +21,19 @@ export class TemplateWidgetComponent implements OnInit {
     };
   }
 
-
-  apiRoot: string = "http://api.openweathermap.org/data/2.5/weather?q=Illingen&appid=332468f7d43cc6c6858ca81118204cdd";
-
   ngOnInit(): void {
+    this.getMyLocation();
   }
 
-  public meinefunc(url: string): void {
-    this.http.get(url).subscribe(res => console.log(res));
+  public getWeather(url: string): void {
+    this.http.get<any>(url).subscribe(res => {
+      var test = this.WeatherWidget$;
+      if(res.weather[0].main == 'Clouds')
+      {
+        test.weather='wolkig'
+      }
+      test.temperature = Number((res.main.temp -273.15).toFixed(0));
+    });
   }
 
   public getMyLocation(): void {
@@ -38,15 +43,11 @@ export class TemplateWidgetComponent implements OnInit {
   successCallback = (position:any) =>{
     var x = position.coords.latitude;
     var y = position.coords.longitude;
-    this.meinefunc("http://api.openweathermap.org/data/2.5/weather?lat="+x+"&lon="+y+"&appid=332468f7d43cc6c6858ca81118204cdd")
-    this.getAddress(x, y).then(this.test123)
+    this.getWeather("http://api.openweathermap.org/data/2.5/weather?lat="+x+"&lon="+y+"&appid=332468f7d43cc6c6858ca81118204cdd")
+    //this.getAddress(x, y).then(console.log)
+    this.displayLocation(x,y)
   };
 
-  test123(test: any): void{
-    var city = test.address_components//[1].long_name
-    console.log(city)
-    //this.WeatherWidget$.location = "Test"
-  }
 
   errorCallback = function(error:any){
     var errorMessage = 'Unknown error';
@@ -65,15 +66,26 @@ export class TemplateWidgetComponent implements OnInit {
   };
 
 
+  displayLocation(latitude:any,longitude:any):any{
+    var request = new XMLHttpRequest();
 
+    var method = 'GET';
+    var widget = this.WeatherWidget$
+    var url = 'https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyAT3XtwPNxF9rcPaEB1HGHpSRRliPZQwSA&latlng=' + latitude + ',' + longitude + '&sensor=true';
+    var async = true;
+    request.open(method, url, async);
+    request.onreadystatechange = function(){
+      if(request.readyState == 4 && request.status == 200){
+        var data = JSON.parse(request.responseText);
+        var address = data.results[0];
+        //console.log(address.address_components)
+        widget.location = address.address_components[1].long_name
+      }
+    };
+    request.send();
+  };
 
-
-
-
-
-
-
-
+/*
   getAddress (latitude:any, longitude:any):any {
     return new Promise(function (resolve, reject) {
         var request = new XMLHttpRequest();
@@ -98,5 +110,5 @@ export class TemplateWidgetComponent implements OnInit {
         request.send();
     });
 };
-
+*/
 }
