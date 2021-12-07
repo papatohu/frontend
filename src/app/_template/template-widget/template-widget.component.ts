@@ -43,9 +43,9 @@ export class TemplateWidgetComponent implements OnInit {
   };
 
   test123(test: any): void{
-    var city = test.address_components[1].long_name
+    var city = test.address_components//[1].long_name
     console.log(city)
-    this.WeatherWidget$.location = "Test"
+    //this.WeatherWidget$.location = "Test"
   }
 
   errorCallback = function(error:any){
@@ -63,6 +63,14 @@ export class TemplateWidgetComponent implements OnInit {
     }
     document.write(errorMessage);
   };
+
+
+
+
+
+
+
+
 
 
 
