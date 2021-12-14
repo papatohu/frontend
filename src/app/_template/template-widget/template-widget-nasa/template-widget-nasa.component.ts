@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-template-widget-nasa',
@@ -13,9 +14,14 @@ export class TemplateWidgetNasaComponent implements OnInit {
     window.location.href='https://www.nasa.gov/multimedia/imagegallery/iotd.html';
   }
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
+  url = "https://api.nasa.gov/planetary/apod?api_key=eMlRsZadzHAMCAKuxUGRYYTxa4ljuiF6KgggX9wa";
+  myimage = "";
+  explanation= "";
+  imgtitle = "";
   ngOnInit(): void {
+    this.http.get<any>(this.url).subscribe(res => {this.myimage = res.url; this.explanation = res.explanation; this.imgtitle = res.title})
   }
 
 }

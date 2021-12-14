@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-template-widget-cartoon',
@@ -13,9 +14,11 @@ export class TemplateWidgetCartoonComponent implements OnInit {
     window.location.href='https://xkcd.com/';
   }
 
-  constructor() { }
+
+  constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
+    this.http.get<any>("https://xkcd.com/").subscribe(res => console.log(res))
   }
 
 }
