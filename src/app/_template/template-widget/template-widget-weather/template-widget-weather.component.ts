@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import {  WeatherWidget  } from '../../_interface/weather-widget';
+import {  WeatherWidget  } from '../../../_interface/weather-widget';
 import { HttpClient } from '@angular/common/http';
 import { analyzeAndValidateNgModules } from '@angular/compiler';
 @Component({
-  selector: 'app-template-widget',
-  templateUrl: './template-widget.component.html',
-  styleUrls: ['./template-widget.component.sass']
+  selector: 'app-template-widget-weather',
+  templateUrl: './template-widget-weather.component.html',
+  styleUrls: ['./template-widget-weather.component.sass']
 })
-export class TemplateWidgetComponent implements OnInit {
+export class TemplateWidgetWeatherComponent implements OnInit {
 
 
   //Add ng lint
@@ -85,30 +85,30 @@ export class TemplateWidgetComponent implements OnInit {
     request.send();
   };
 
-/*
-  getAddress (latitude:any, longitude:any):any {
-    return new Promise(function (resolve, reject) {
-        var request = new XMLHttpRequest();
+  /*
+    getAddress (latitude:any, longitude:any):any {
+      return new Promise(function (resolve, reject) {
+          var request = new XMLHttpRequest();
 
-        var method = 'GET';
-        var url = 'https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyAT3XtwPNxF9rcPaEB1HGHpSRRliPZQwSA&latlng=' + latitude + ',' + longitude + '&sensor=true';
-        var async = true;
+          var method = 'GET';
+          var url = 'https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyAT3XtwPNxF9rcPaEB1HGHpSRRliPZQwSA&latlng=' + latitude + ',' + longitude + '&sensor=true';
+          var async = true;
 
-        request.open(method, url, async);
-        request.onreadystatechange = function () {
-            if (request.readyState == 4) {
-                if (request.status == 200) {
-                    var data = JSON.parse(request.responseText);
-                    var address = data.results[0];
-                    resolve(address);
-                }
-                else {
-                    reject(request.status);
-                }
-            }
-        };
-        request.send();
-    });
-};
-*/
+          request.open(method, url, async);
+          request.onreadystatechange = function () {
+              if (request.readyState == 4) {
+                  if (request.status == 200) {
+                      var data = JSON.parse(request.responseText);
+                      var address = data.results[0];
+                      resolve(address);
+                  }
+                  else {
+                      reject(request.status);
+                  }
+              }
+          };
+          request.send();
+      });
+  };
+  */
 }
