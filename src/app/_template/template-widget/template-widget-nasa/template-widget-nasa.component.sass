@@ -9,6 +9,8 @@
   border: 1px solid $whitemode
   border-radius: 5px
   box-shadow: 0px 0 $size*0.2 $whitemode
+  vertical-align: top
+  height: 20vh
   transition: all 500ms
   h2
     text-align: center
@@ -19,15 +21,18 @@
     padding-top: 10%
     padding-bottom: 20%
 
-.widget.weather
-  .widgetImg
-    width: 40px
-  .widgetLocationImg
-    width: 20px
-    position: absolute
-  table
-    font-size: $size*2
 .widget:hover
   background-color: $olive
   border-color: $darkmode
   box-shadow: 0 0 $size*0.2 $darkmode
+.nasa
+  position: relative
+  display: inline-block
+  overflow: hidden
+.nasaimage
+  background-color: red
+  border: 1px solid blue
+  display: block
+  position: absolute //set the position to absolute
+  height: 100%
+  bottom: 0

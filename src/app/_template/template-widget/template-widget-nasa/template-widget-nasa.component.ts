@@ -14,6 +14,7 @@ export class TemplateWidgetNasaComponent implements OnInit {
     window.location.href='https://www.nasa.gov/multimedia/imagegallery/iotd.html';
   }
 
+
   constructor(private http: HttpClient) { }
 
   url = "https://api.nasa.gov/planetary/apod?api_key=eMlRsZadzHAMCAKuxUGRYYTxa4ljuiF6KgggX9wa";

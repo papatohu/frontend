@@ -12,6 +12,7 @@ import { TemplateWidgetKvvComponent } from './_template/template-widget/template
 import { TemplateWidgetNasaComponent } from './_template/template-widget/template-widget-nasa/template-widget-nasa.component';
 import { TemplateWidgetCartoonComponent } from './_template/template-widget/template-widget-cartoon/template-widget-cartoon.component';
 import {TemplateWidgetWeatherComponent} from "./_template/template-widget/template-widget-weather/template-widget-weather.component";
+import { YellPipe } from './yell.pipe';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import {TemplateWidgetWeatherComponent} from "./_template/template-widget/templa
     TemplateWidgetKvvComponent,
     TemplateWidgetNasaComponent,
     TemplateWidgetCartoonComponent,
-    TemplateWidgetWeatherComponent
+    TemplateWidgetWeatherComponent,
+    YellPipe
   ],
   imports: [
     BrowserModule,
