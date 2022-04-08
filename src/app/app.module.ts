@@ -13,6 +13,7 @@ import { TemplateWidgetNasaComponent } from './_template/template-widget/templat
 import { TemplateWidgetCartoonComponent } from './_template/template-widget/template-widget-cartoon/template-widget-cartoon.component';
 import {TemplateWidgetWeatherComponent} from "./_template/template-widget/template-widget-weather/template-widget-weather.component";
 import { YellPipe } from './yell.pipe';
+import { TemplateWidgetMapsComponent } from './_template/template-widget/template-widget-maps/template-widget-maps.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { YellPipe } from './yell.pipe';
     TemplateWidgetNasaComponent,
     TemplateWidgetCartoonComponent,
     TemplateWidgetWeatherComponent,
-    YellPipe
+    YellPipe,
+    TemplateWidgetMapsComponent
   ],
   imports: [
     BrowserModule,

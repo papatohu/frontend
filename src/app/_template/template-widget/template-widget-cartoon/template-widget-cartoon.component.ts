@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 @Component({
   selector: 'app-template-widget-cartoon',
@@ -9,6 +9,7 @@ import { HttpClient } from '@angular/common/http';
 export class TemplateWidgetCartoonComponent implements OnInit {
 
   title = 'XKCD Cartoon of the day';
+  myimage = "";
 
   goCartoon() {
     window.location.href='https://xkcd.com/';
@@ -17,8 +18,7 @@ export class TemplateWidgetCartoonComponent implements OnInit {
 
   constructor(private http: HttpClient) { }
 
-  ngOnInit(): void {
-    this.http.get<any>("https://xkcd.com/").subscribe(res => console.log(res))
+  ngOnInit(): void {this.http.get<any>("/info.0.json").subscribe(res => {this.myimage = res.img})
   }
 
 }

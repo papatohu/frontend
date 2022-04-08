@@ -1,0 +1,8 @@
+{
+  "*": {
+    "target": "https://xkcd.com",
+    "secure": true,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  }
+}
