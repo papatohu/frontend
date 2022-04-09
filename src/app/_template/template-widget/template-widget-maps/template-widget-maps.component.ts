@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog, MatDialogConfig } from "@angular/material";
+import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
+import {PopupConfigComponent} from "./popup-config/popup-config.component";
 
 @Component({
   selector: 'app-template-widget-maps',
@@ -8,7 +9,7 @@ import { MatDialog, MatDialogConfig } from "@angular/material";
 })
 export class TemplateWidgetMapsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private dialog: MatDialog) { }
 
   origin = "";//Leerzeichen mit plus
   destination = "";//Leerzeichen mit plus
@@ -19,6 +20,14 @@ export class TemplateWidgetMapsComponent implements OnInit {
   api_base = "https://www.google.com/maps/embed/v1/directions?key=AIzaSyB58SKmmu04kFriAI8WWhi8fT1yvJoVw-c"
 
   ngOnInit(): void {
+  }
+
+  openDialog(): void {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "10%";
+    this.dialog.open(PopupConfigComponent, dialogConfig);
+
   }
 
 }

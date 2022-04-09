@@ -1,8 +1,13 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { HttpClientModule } from '@angular/common/http';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatInputModule } from "@angular/material/input";
+import { MatSelectModule } from '@angular/material/select';
+import { MatButtonModule } from '@angular/material/button';
+import {DragDropModule} from '@angular/cdk/drag-drop';
 
 import { AppComponent } from './app.component';
 import { PageListComponent } from './page-list/page-list.component';
@@ -14,6 +19,8 @@ import { TemplateWidgetCartoonComponent } from './_template/template-widget/temp
 import {TemplateWidgetWeatherComponent} from "./_template/template-widget/template-widget-weather/template-widget-weather.component";
 import { YellPipe } from './yell.pipe';
 import { TemplateWidgetMapsComponent } from './_template/template-widget/template-widget-maps/template-widget-maps.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { PopupConfigComponent } from './_template/template-widget/template-widget-maps/popup-config/popup-config.component';
 
 @NgModule({
   declarations: [
@@ -26,12 +33,27 @@ import { TemplateWidgetMapsComponent } from './_template/template-widget/templat
     TemplateWidgetCartoonComponent,
     TemplateWidgetWeatherComponent,
     YellPipe,
-    TemplateWidgetMapsComponent
+    TemplateWidgetMapsComponent,
+    PopupConfigComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatDialogModule,
+    MatInputModule,
+    MatSelectModule,
+    ReactiveFormsModule,
+    MatButtonModule,
+    DragDropModule
+  ],
+  exports: [
+    MatDialogModule,
+    MatInputModule,
+    MatSelectModule,
+    MatButtonModule,
+    DragDropModule
   ],
   providers: [],
   bootstrap: [AppComponent]

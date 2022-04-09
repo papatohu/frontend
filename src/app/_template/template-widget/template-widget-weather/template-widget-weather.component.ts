@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {  WeatherWidget  } from '../../../_interface/weather-widget';
 import { HttpClient } from '@angular/common/http';
 import { analyzeAndValidateNgModules } from '@angular/compiler';
+import {CdkDragRelease, DragRef} from "@angular/cdk/drag-drop";
 @Component({
   selector: 'app-template-widget-weather',
   templateUrl: './template-widget-weather.component.html',
@@ -9,6 +10,18 @@ import { analyzeAndValidateNgModules } from '@angular/compiler';
 })
 export class TemplateWidgetWeatherComponent implements OnInit {
 
+  dragPosition = {x:0,y:0};
+  releasedObject(event: CdkDragRelease<DragRef>): void {
+    let position = event.source.getRootElement().getAttribute("style");
+    // @ts-ignore
+    let positionX = Number(position.split("translate3d(")[1].split("px")[0])
+    positionX = positionX%10<5?positionX-positionX%10:positionX+10-positionX%10
+    // @ts-ignore
+    let positionY = Number(position.split("translate3d(")[1].split("px")[1].split(", ")[1])
+    positionY = positionY%10<5?positionY-positionY%10:positionY+10-positionY%10
+      //transform: translate3d(252px, 248px, 0px);
+    this.dragPosition = {x: positionX, y: positionY}
+  }
 
   //Add ng lint
   public WeatherWidget$: WeatherWidget;
