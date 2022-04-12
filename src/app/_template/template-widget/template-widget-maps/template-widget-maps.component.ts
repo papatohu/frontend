@@ -25,7 +25,7 @@ export class TemplateWidgetMapsComponent implements OnInit {
   openDialog(): void {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.autoFocus = true;
-    dialogConfig.width = "10%";
+    dialogConfig.width = "256px"; //entweder 256px als statischer Wert oder die Größe der Elemente des Dialogs anpassen
     this.dialog.open(PopupConfigComponent, dialogConfig);
 
   }

@@ -6,3 +6,20 @@
     "logLevel": "debug"
   }
 }
+//Apache Proxy Configuration:
+
+//<IfModule mod_proxy.c>
+//#
+//# Reverse Proxy
+//#
+//SSLProxyEngine on
+//ProxyRequests On
+//<Proxy *>
+//    Order deny,allow
+//    Allow from all
+//</Proxy>
+//#ProxyVia On
+//ProxyPass //info.0.json https://xkcd.com/info.0.json
+//ProxyPassReverse //info.0.json https://xkcd.com/info.0.json
+//#ProxyPreserveHost On
+//</IfModule>
