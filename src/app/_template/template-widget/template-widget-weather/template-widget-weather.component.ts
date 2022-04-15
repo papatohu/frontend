@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {  WeatherWidget  } from '../../../_interface/weather-widget';
 import { HttpClient } from '@angular/common/http';
 import { analyzeAndValidateNgModules } from '@angular/compiler';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 @Component({
   selector: 'app-template-widget-weather',
   templateUrl: './template-widget-weather.component.html',

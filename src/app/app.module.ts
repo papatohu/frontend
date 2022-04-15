@@ -13,6 +13,8 @@ import { TemplateWidgetNasaComponent } from './_template/template-widget/templat
 import { TemplateWidgetCartoonComponent } from './_template/template-widget/template-widget-cartoon/template-widget-cartoon.component';
 import {TemplateWidgetWeatherComponent} from "./_template/template-widget/template-widget-weather/template-widget-weather.component";
 
+import {DragDropModule} from '@angular/cdk/drag-drop';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +29,9 @@ import {TemplateWidgetWeatherComponent} from "./_template/template-widget/templa
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    DragDropModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
