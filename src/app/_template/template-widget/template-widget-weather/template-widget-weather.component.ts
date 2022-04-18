@@ -56,11 +56,10 @@ export class TemplateWidgetWeatherComponent implements OnInit {
 
   public getWeather(url: string): void {
     this.http.get<any>(url).subscribe(res => {
-      var test = this.WeatherWidget$;
       if (res.weather[0].main == 'Clouds') {
-        test.weather = 'wolkig'
+        this.WeatherWidget$.weather = 'wolkig'
       }
-      test.temperature = Number((res.main.temp - 273.15).toFixed(0));
+      this.WeatherWidget$.temperature = Number((res.main.temp - 273.15).toFixed(0));
     });
   }
 
@@ -77,7 +76,7 @@ export class TemplateWidgetWeatherComponent implements OnInit {
   };
 
 
-  errorCallback = function (error: any) {
+  errorCallback = (error: any) => {
     var errorMessage = 'Unknown error';
     switch (error.code) {
       case 1:
@@ -90,7 +89,10 @@ export class TemplateWidgetWeatherComponent implements OnInit {
         errorMessage = 'Timeout';
         break;
     }
-    document.write(errorMessage);
+    this.WeatherWidget$.location = errorMessage;
+    this.WeatherWidget$.weather = "";
+    this.WeatherWidget$.temperature = 0;
+    //document.write(errorMessage);
   };
 
 
