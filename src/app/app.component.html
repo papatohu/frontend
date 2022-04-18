@@ -1,8 +1,12 @@
-<app-template-header>
-  <table width=100%>
-    <tr>
-      <td style="width: 20%;"><img src="../../../assets/images/background1.png" alt=""></td>
-    </tr>
-  </table>
-</app-template-header>
-<app-page-list></app-page-list>
+<mat-grid-list cols="4" rowHeight="150px">
+  <mat-grid-tile
+    *ngFor="let item of list; let index = index;"
+    [rowspan]="item.rows"
+    [colspan]="item.cols"
+    style="background-color: darkolivegreen;"
+    cdkDrag>
+
+
+
+  </mat-grid-tile>
+</mat-grid-list>
