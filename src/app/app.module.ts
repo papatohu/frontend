@@ -22,6 +22,7 @@ import { TemplateWidgetMapsComponent } from './_template/template-widget/templat
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PopupConfigComponent } from './_template/template-widget/template-widget-maps/popup-config/popup-config.component';
 import { PopupNasaComponent } from './_template/template-widget/template-widget-nasa/popup-nasa/popup-nasa.component';
+import { TemplateWidgetMotivationalTextsComponent } from './_template/template-widget/template-widget-motivational-texts/template-widget-motivational-texts.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { PopupNasaComponent } from './_template/template-widget/template-widget-
     YellPipe,
     TemplateWidgetMapsComponent,
     PopupConfigComponent,
-    PopupNasaComponent
+    PopupNasaComponent,
+    TemplateWidgetMotivationalTextsComponent
   ],
   imports: [
     BrowserModule,

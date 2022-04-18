@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-popup-nasa',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PopupNasaComponent implements OnInit {
 
-  constructor() { }
 
+  url = "https://api.nasa.gov/planetary/apod?api_key=eMlRsZadzHAMCAKuxUGRYYTxa4ljuiF6KgggX9wa";
+  constructor(private http: HttpClient) { }
+  myimage = "";
   ngOnInit(): void {
+    this.http.get<any>(this.url).subscribe(res => {this.myimage = res.url})
   }
 
 }
