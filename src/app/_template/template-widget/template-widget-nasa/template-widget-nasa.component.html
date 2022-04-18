@@ -1,7 +1,7 @@
 <div (click)="showImage()" class="widget nasa">
   <div style="display: block;"><h2>{{title}}</h2>
   <div style="text-align: center;"><h3>{{imgtitle}}</h3></div></div>
-  <div class="nasaimage"><img  src="{{myimage}}" *ngIf="myimage != undefined"/></div>
+  <div class="nasaimage" (click) = "openDialog()"><img  src="{{myimage}}" *ngIf="myimage != undefined"/></div>
 
 
   <!--

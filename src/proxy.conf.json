@@ -1,25 +1,14 @@
 {
-  "*": {
+  "/info.0.json": {
     "target": "https://xkcd.com",
+    "secure": true,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  },
+  "/api/today": {
+    "target": "https://zenquotes.io/",
     "secure": true,
     "changeOrigin": true,
     "logLevel": "debug"
   }
 }
-//Apache Proxy Configuration:
-
-//<IfModule mod_proxy.c>
-//#
-//# Reverse Proxy
-//#
-//SSLProxyEngine on
-//ProxyRequests On
-//<Proxy *>
-//    Order deny,allow
-//    Allow from all
-//</Proxy>
-//#ProxyVia On
-//ProxyPass //info.0.json https://xkcd.com/info.0.json
-//ProxyPassReverse //info.0.json https://xkcd.com/info.0.json
-//#ProxyPreserveHost On
-//</IfModule>

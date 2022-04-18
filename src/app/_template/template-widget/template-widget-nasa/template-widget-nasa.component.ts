@@ -40,4 +40,11 @@ export class TemplateWidgetNasaComponent implements OnInit {
     this.imgtitle = nasaObject.imageTitle
   }
 
+  openDialog(): void{
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "max-content"; //entweder 256px als statischer Wert oder die Größe der Elemente des Dialogs anpassen
+    dialogConfig.maxWidth = "max-content";
+    this.dialog.open(PopupNasaComponent, dialogConfig);
+  }
 }
