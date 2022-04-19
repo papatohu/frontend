@@ -22,7 +22,8 @@ export class TemplateWidgetNasaComponent implements OnInit {
   showImage() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.autoFocus = true;
-    dialogConfig.width = "60%"; //entweder 256px als statischer Wert oder die Größe der Elemente des Dialogs anpassen
+    dialogConfig.width = "max-content"; //entweder 256px als statischer Wert oder die Größe der Elemente des Dialogs anpassen
+    dialogConfig.maxWidth = "max-content";
     this.dialog.open(PopupNasaComponent, dialogConfig);
   }
 
@@ -33,18 +34,10 @@ export class TemplateWidgetNasaComponent implements OnInit {
   explanation= "";
   imgtitle = "";
   ngOnInit(): void {
-    //this.http.get<any>(this.url).subscribe(res => {this.myimage = res.url; this.explanation = res.explanation; this.imgtitle = res.title})
-    const nasaObject = this.service.getInformation()
-    this.myimage = nasaObject.imageUrl
-    this.explanation = nasaObject.explanation
-    this.imgtitle = nasaObject.imageTitle
-  }
-
-  openDialog(): void{
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.autoFocus = true;
-    dialogConfig.width = "max-content"; //entweder 256px als statischer Wert oder die Größe der Elemente des Dialogs anpassen
-    dialogConfig.maxWidth = "max-content";
-    this.dialog.open(PopupNasaComponent, dialogConfig);
+    this.service.getInformation().subscribe(res => {
+      this.myimage = res.url;
+      this.imgtitle = res.title;
+      this.explanation = res.explanation
+    })
   }
 }

@@ -1,6 +1,12 @@
 {
-  "*": {
+  "//info.0.json": {
     "target": "https://xkcd.com",
+    "secure": true,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  },
+  "/api/today": {
+    "target": "https://zenquotes.io/",
     "secure": true,
     "changeOrigin": true,
     "logLevel": "debug"

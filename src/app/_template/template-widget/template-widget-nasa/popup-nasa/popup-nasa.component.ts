@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
+import {WidgetNasaService} from "../../../../_service/widgets/widget-nasa/widget-nasa.service";
 
 @Component({
   selector: 'app-popup-nasa',
@@ -9,11 +10,10 @@ import {HttpClient} from "@angular/common/http";
 export class PopupNasaComponent implements OnInit {
 
 
-  url = "https://api.nasa.gov/planetary/apod?api_key=eMlRsZadzHAMCAKuxUGRYYTxa4ljuiF6KgggX9wa";
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private service: WidgetNasaService) { }
   myimage = "";
   ngOnInit(): void {
-    this.http.get<any>(this.url).subscribe(res => {this.myimage = res.url})
+    this.service.getInformation().subscribe(res => {this.myimage = res.url})
   }
 
 }

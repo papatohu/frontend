@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {catchError, EMPTY, Observable, shareReplay} from "rxjs";
+import {map, Observable, publishReplay, refCount} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 
 @Injectable({
@@ -12,34 +12,18 @@ export class WidgetNasaService {
 // HTTP Anfragen geschehen
 //
 // 	Weniger naiver Cache: Das Observable an sich im Cache speichern
-  cache = new Observable()
   url = "https://api.nasa.gov/planetary/apod?api_key=eMlRsZadzHAMCAKuxUGRYYTxa4ljuiF6KgggX9wa"
   constructor(private http: HttpClient) { }
 
-  private resolveRequest():Observable<any> {
-    if(!this.cache==null){
-      console.log('returning from cache!')
-      return this.cache
+  caches: Observable<any> | undefined
+  getInformation(): Observable<any>{
+    if (!this.caches) {
+      this.caches = this.http.get(this.url).pipe(
+        map(data => data),
+        publishReplay(1), // this tells Rx to cache the latest emitted
+        refCount() // and this tells Rx to keep the Observable alive as long as there are any Subscribers
+      );
     }
-    console.log('requesting...')
-    this.cache = this.http.get(this.url).pipe(
-      shareReplay(1),
-      catchError(err => {
-        // @ts-ignore
-        delete this.cache;
-        return EMPTY;
-      }));
-    return this.cache;
+    return this.caches;
   }
-  getInformation(): NASAObject{
-    const output = new NASAObject()
-    this.resolveRequest().subscribe(res => {output.imageUrl = res.url; output.explanation = res.explanation; output.imageTitle = res.title})
-    return output
-  }
-}
-
-class NASAObject {
-  imageUrl: string = "";
-  explanation: string = "";
-  imageTitle: string = "";
 }
