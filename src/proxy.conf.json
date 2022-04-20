@@ -1,5 +1,5 @@
 {
-  "//info.0.json": {
+  "/info.0.json": {
     "target": "https://xkcd.com",
     "secure": true,
     "changeOrigin": true,
@@ -12,4 +12,3 @@
     "logLevel": "debug"
   }
 }
-
