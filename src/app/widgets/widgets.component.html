@@ -1,0 +1,13 @@
+<ktd-grid [cols]="cols"
+          [rowHeight]="rowHeight"
+          [layout]="layout"
+          (layoutUpdated)="onLayoutUpdated($event)">
+  <ktd-grid-item *ngFor="let item of layout; trackBy:trackById" [id]="item.id"
+                 [draggable]="true"
+                 [resizable]="false">
+    <div class="grid-item-content" *ngIf="item.id == '0'"></div>
+    <app-weather *ngIf="item.id == '1'"></app-weather>
+    <app-nasa *ngIf="item.id == '2'"></app-nasa>
+    <app-cartoon *ngIf="item.id == '3'"></app-cartoon>
+  </ktd-grid-item>
+</ktd-grid>
