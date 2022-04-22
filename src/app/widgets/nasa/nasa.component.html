@@ -1,1 +1,11 @@
-<p>nasa works!</p>
+<div (click)="showImage()" class="widget nasa">
+  <div><h2>{{title}}</h2>
+    <div style="text-align: center;"><h3>{{imgtitle}}</h3></div></div>
+  <div class="nasaimage"><img  src="{{myimage}}" *ngIf="myimage != undefined"/></div>
+
+
+  <!--
+  <div style="font-size: 15px;">{{explanation}}</div>
+  -->
+</div>
+
