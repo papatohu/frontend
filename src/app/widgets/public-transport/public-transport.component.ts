@@ -22,7 +22,7 @@ export class PublicTransportComponent implements OnInit {
   }
   getData(){
     // const url ='https://www.kvv.de/tunnelEfaDirect.php?action=XSLT_DM_REQUEST&outputFormat=JSON&language=de&name_dm=7001004&type_dm=stopID&useRealtime=1'
-    const url = 'https://www.kvv.de/tunnelEfaDirect.php?action=XSLT_STOPFINDER_REQUEST&coordOutputFormat=WGS84[dd.ddddd]&name_sf=Karlsruhe%20Europaplatz&language=de&outputFormat=JSON&type_sf=stop&useRealtime=1'
+    const url = '/tunnelEfaDirect.php?action=XSLT_STOPFINDER_REQUEST&coordOutputFormat=WGS84[dd.ddddd]&name_sf=Karlsruhe%20Europaplatz&language=de&outputFormat=JSON&type_sf=stop&useRealtime=1'
     this.http.get(url).subscribe((res)=>{
       this.data = res
       console.log(this.data)

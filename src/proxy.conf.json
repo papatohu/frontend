@@ -11,9 +11,10 @@
     "changeOrigin": true,
     "logLevel": "debug"
   },
-  "/api": {
-    "target": "https://www.kvv.de/tunnelEfaDirect.php?action=XSLT_STOPFINDER_REQUEST&coordOutputFormat=WGS84[dd.ddddd]&name_sf=Karlsruhe%20Europaplatz&language=de&outputFormat=JSON&type_sf=stop&useRealtime=1",
-    "secure": false
-
+  "/tunnelEfaDirect.php*": {
+    "target": "https://www.kvv.de",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
   }
 }
