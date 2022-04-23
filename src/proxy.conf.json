@@ -5,7 +5,7 @@
     "changeOrigin": true,
     "logLevel": "debug"
   },
-  "/api/today": {
+  "/api/random": {
     "target": "https://zenquotes.io/",
     "secure": true,
     "changeOrigin": true,

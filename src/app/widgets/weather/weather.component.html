@@ -1,16 +1,27 @@
-<div class="widget weather" (click)="getMyLocation()">
-  <table width=100%>
+<div class="widget">
+  <table>
     <tr>
-      <td style="width: 20%;">
+      <td class="widgetimgcolumn">
         <img src="../../../../assets/images/cloud.svg" class="widgetImg" *ngIf="WeatherWidget$.weather == 'wolkig'"/>
         <img src="../../../../assets/images/rain.svg" class="widgetImg" *ngIf="WeatherWidget$.weather == 'Regen'"/>
       </td>
-      <td style="width: 15%;">{{ WeatherWidget$.temperature }}°</td>
-      <td align="left">{{ WeatherWidget$.weather }}</td>
+      <td class="temperaturecolumn">
+        <h1>{{ WeatherWidget$.temperature }}°</h1>
+      </td>
+      <td class="weathercolumn">
+        <h1>{{ WeatherWidget$.weather }}</h1>
+      </td>
     </tr>
   </table>
-  <h2 id="line1">
-    {{ WeatherWidget$.location }}
-    <img src="../../../../assets/images/location.svg" class="widgetLocationImg" (click)="getMyLocation()"/>
-  </h2>
+  <table>
+    <tr>
+      <td class="locationcolumn">
+        <h2>{{ WeatherWidget$.location }}</h2>
+      </td>
+      <td class="locationimgcolumn">
+        <img src="../../../../assets/images/location.svg" class="widgetLocationImg" (click)="getMyLocation()"/>
+      </td>
+    </tr>
+  </table>
+
 </div>

@@ -1,7 +1,23 @@
-<div (click)="showImage()" class="widget nasa">
-  <div><h2>{{title}}</h2>
-    <div style="text-align: center;"><h3>{{imgtitle}}</h3></div></div>
-  <div class="nasaimage"><img  src="{{myimage}}" *ngIf="myimage != undefined"/></div>
+<div class="widget">
+  <table>
+    <tr>
+      <td class="titlecolumn">
+        <h2 class="title">{{title}}</h2>
+      </td>
+    </tr>
+    <tr>
+      <td class="imgtitlecolumn">
+        <h3 class="imgtitle">{{imgtitle}}</h3>
+      </td>
+    </tr>
+    <tr>
+      <td class="imgcolumn">
+        <div>
+          <img class="nasaimage" src="{{myimage}}" *ngIf="myimage != undefined" (click)="showImage()"/>
+        </div>
+      </td>
+    </tr>
+  </table>
 
 
   <!--
