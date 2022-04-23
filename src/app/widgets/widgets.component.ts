@@ -36,7 +36,7 @@ export class WidgetsComponent {
     //Maps-Widget
     {id: '4', x: this.widgetPositions.maps.x, y: this.widgetPositions.maps.y, w: 1, h: 1},
     //Public-Transport-Widget
-    {id: '5', x: this.widgetPositions.public_transport.x, y: this.widgetPositions.public_transport.y, w: 1, h: 1},
+    {id: '5', x: this.widgetPositions.public_transport.x, y: this.widgetPositions.public_transport.y, w: 2, h: 4, minW: 2, minH: 3},
     //Stocks-Widget
     {id: '6', x: this.widgetPositions.stocks.x, y: this.widgetPositions.stocks.y, w: 1, h: 1},
     //Text-of-the-day-Widget
