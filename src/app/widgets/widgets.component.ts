@@ -30,11 +30,11 @@ export class WidgetsComponent {
     //Weather-Widget
     {id: '1', x: this.widgetPositions.weather.x, y: this.widgetPositions.weather.y, w: 2, h: 2},
     //Nasa-Widget
-    {id: '2', x: this.widgetPositions.nasa.x, y: this.widgetPositions.nasa.y, w: 2.5, h: 4, minW: 2, minH: 3},
+    {id: '2', x: this.widgetPositions.nasa.x, y: this.widgetPositions.nasa.y, w: 1.5, h: 3, minW: 2, minH: 3},
     //Cartoon-Widget
     {id: '3', x: this.widgetPositions.cartoon.x, y: this.widgetPositions.cartoon.y, w: 2.5, h: 4, minW: 2, maxW: 3, minH: 2, maxH: 5},
     //Maps-Widget
-    {id: '4', x: this.widgetPositions.maps.x, y: this.widgetPositions.maps.y, w: 1.8, h: 2.2},
+    {id: '4', x: this.widgetPositions.maps.x, y: this.widgetPositions.maps.y, w: 1.5, h: 3.5},
     //Public-Transport-Widget
     {id: '5', x: this.widgetPositions.public_transport.x, y: this.widgetPositions.public_transport.y, w: 2, h: 4, minW: 2, minH: 3},
     //Stocks-Widget

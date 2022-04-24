@@ -31,11 +31,29 @@ export class NasaComponent implements OnInit {
   myimage = "";
   explanation= "";
   imgtitle = "";
+
+
   ngOnInit(): void {
     this.service.getInformation().subscribe(res => {
       this.myimage = res.url;
       this.imgtitle = res.title;
       this.explanation = res.explanation
+      let img = new Image()
+      img.src = res.url
+      img.onload = (event) => {
+        let loadedImage = event.currentTarget
+        if(loadedImage) {
+          const width = (loadedImage as HTMLImageElement).width
+          const height = (loadedImage as HTMLImageElement).height
+          var widgetwidth = document.getElementById("widget")!.offsetWidth * 0.9
+          var widgetheight = document.getElementById("widget")!.offsetHeight * 0.9
+          const ratio = widgetwidth/widgetheight;
+          if(height > width/ratio) {
+            const overlap = document.getElementById("nasaimage")!.offsetHeight - widgetheight
+            document.getElementById("nasaimage")!.style.width = (document.getElementById("nasaimage")!.offsetWidth - overlap*ratio).toString()+"px"
+          }
+        }
+      }
     })
   }
 

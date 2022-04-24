@@ -1,8 +1,8 @@
-<div class="widget">
+<div class="widget" id="widget">
   <table>
     <tr>
       <td class="titlecolumn">
-        <h2 class="title">{{title}}</h2>
+        <h2 class="title" (click)="goNasa()">{{title}}</h2>
       </td>
     </tr>
     <tr>
@@ -13,7 +13,7 @@
     <tr>
       <td class="imgcolumn">
         <div>
-          <img class="nasaimage" src="{{myimage}}" *ngIf="myimage != undefined" (click)="showImage()"/>
+          <img class="nasaimage" src="{{myimage}}" *ngIf="myimage != undefined" (click)="showImage()" id="nasaimage"/>
         </div>
       </td>
     </tr>
