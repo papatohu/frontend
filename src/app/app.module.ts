@@ -24,6 +24,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {PopupNasaComponent} from "./widgets/nasa/popup-nasa/popup-nasa.component";
 import { MapsPopupComponent } from './widgets/maps/maps-popup/maps-popup.component';
 import { CartoonPopupComponent } from './widgets/cartoon/cartoon-popup/cartoon-popup.component';
+import {NgApexchartsModule} from "ng-apexcharts";
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { CartoonPopupComponent } from './widgets/cartoon/cartoon-popup/cartoon-p
     MatDialogModule,
     MatInputModule,
     MatSelectModule,
-    MatButtonModule
+    MatButtonModule,
+    NgApexchartsModule
   ],
   exports: [
     MatDialogModule,
