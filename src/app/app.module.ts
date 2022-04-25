@@ -23,6 +23,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {PopupNasaComponent} from "./widgets/nasa/popup-nasa/popup-nasa.component";
 import { MapsPopupComponent } from './widgets/maps/maps-popup/maps-popup.component';
+import { CartoonPopupComponent } from './widgets/cartoon/cartoon-popup/cartoon-popup.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { MapsPopupComponent } from './widgets/maps/maps-popup/maps-popup.compone
     TextOfTheDayComponent,
     StocksComponent,
     PopupNasaComponent,
-    MapsPopupComponent
+    MapsPopupComponent,
+    CartoonPopupComponent
   ],
   imports: [
     BrowserModule,

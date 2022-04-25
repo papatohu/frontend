@@ -5,5 +5,5 @@
       <td style="width: 80%;"><h2 (click)="goCartoon()" class="title">{{title}}</h2></td>
     </tr>
   </table>
-  <img src="{{myimage}}" *ngIf="myimage != undefined" class="xkcdimage"/>
+  <img src="{{myimage}}" *ngIf="myimage != undefined" class="xkcdimage" (click)="openDialog()"/>
 </div>
