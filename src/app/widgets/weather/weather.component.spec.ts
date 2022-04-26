@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { NgModule } from '@angular/core';
 import { WeatherComponent } from './weather.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+
 
 describe('WeatherComponent', () => {
   let component: WeatherComponent;
@@ -8,7 +10,9 @@ describe('WeatherComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ WeatherComponent ]
+      declarations: [ WeatherComponent ],
+      imports: [HttpClientTestingModule]
+
     })
     .compileComponents();
   });
@@ -22,4 +26,9 @@ describe('WeatherComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+ /* it('1 be 2', () => {
+    expect(1).toBe(2);
+  });
+*/
 });
