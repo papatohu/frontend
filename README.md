@@ -1,4 +1,4 @@
-![Code coverage Badge](https://img.shields.io/badge/Papatohu-coverage%3A%2015.9%25-orange)
+![Code coverage Badge](https://img.shields.io/badge/Frontend-coverage%3A%2015.9%25-orange)
 # NewDashboard
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.3.
