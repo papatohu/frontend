@@ -25,6 +25,7 @@ import {PopupNasaComponent} from "./widgets/nasa/popup-nasa/popup-nasa.component
 import { MapsPopupComponent } from './widgets/maps/maps-popup/maps-popup.component';
 import { CartoonPopupComponent } from './widgets/cartoon/cartoon-popup/cartoon-popup.component';
 import {NgApexchartsModule} from "ng-apexcharts";
+import { DailyNewsComponent } from './widgets/daily-news/daily-news.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import {NgApexchartsModule} from "ng-apexcharts";
     StocksComponent,
     PopupNasaComponent,
     MapsPopupComponent,
-    CartoonPopupComponent
+    CartoonPopupComponent,
+    DailyNewsComponent
   ],
   imports: [
     BrowserModule,

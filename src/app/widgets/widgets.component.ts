@@ -21,7 +21,8 @@ export class WidgetsComponent {
     "maps": { "x": 0, "y": 3 },
     "public_transport": { "x": 0, "y": 4 },
     "stocks": { "x": 0, "y": 5 },
-    "text_of_the_day": { "x": 0, "y": 6 }
+    "text_of_the_day": { "x": 0, "y": 6 },
+    "daily-news": { "x": 0, "y": 7 }
   }
   cols: number = 6;
   rowHeight: number = 100;
@@ -41,7 +42,8 @@ export class WidgetsComponent {
     {id: '6', x: this.widgetPositions.stocks.x, y: this.widgetPositions.stocks.y, w: 1.5, h: 4},
     //Text-of-the-day-Widget
     {id: '7', x: this.widgetPositions.text_of_the_day.x, y: this.widgetPositions.text_of_the_day.y, w: 1, h: 1},
-
+    // Daily-News-Widget
+    {id: '8', x: this.widgetPositions["daily-news"].x, y: this.widgetPositions["daily-news"].y, w: 1, h: 1},
   ];
   trackById = ktdTrackById
 }
