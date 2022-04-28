@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { NgModule } from '@angular/core';
 import { WeatherComponent } from './weather.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import {AppComponent} from "../../app.component";
 
 
 describe('WeatherComponent', () => {
@@ -14,7 +15,7 @@ describe('WeatherComponent', () => {
       imports: [HttpClientTestingModule]
 
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
@@ -27,8 +28,19 @@ describe('WeatherComponent', () => {
     expect(component).toBeTruthy();
   });
 
- /* it('1 be 2', () => {
-    expect(1).toBe(2);
+  it('location not empty', () => {
+    const fixture = TestBed.createComponent(WeatherComponent);
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement as HTMLElement;
+    console.log(compiled.querySelector('.locationcolumn h2')?.textContent)
+    expect(compiled.querySelector('.locationcolumn h2')?.textContent).toMatch("..*");
   });
-*/
+
+  it('temperature not empty', () => {
+    const fixture = TestBed.createComponent(WeatherComponent);
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement as HTMLElement;
+    console.log(compiled)
+    expect(compiled.querySelector('.temperaturecolumn h1')?.textContent).toMatch("..*°");
+  });
 });
