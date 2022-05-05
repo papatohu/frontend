@@ -17,23 +17,23 @@ export class WidgetsComponent implements OnInit{
   public data$: Observable<KtdGridLayout> | undefined;
   constructor(private userService:UserConfigService) {
   }
-  onLayoutUpdated(layout: KtdGridLayout) {
-    // console.log('on layout updated', layout);
-    // this.layout = layout;
+  postNewWidgetPositionsToBackend(layout: KtdGridLayout) {
+    console.log(layout)
+    this.userService.postNewWidgetPositionsToBackend(layout)
   }
   backendCall() {
     //set widgetPositions Object
   }
-  private widgetPositions = {
-    "weather": { "x": 0, "y": 0 },
-    "nasa": { "x": 0, "y": 1 },
-    "cartoon": { "x": 0, "y": 2 },
-    "maps": { "x": 0, "y": 3 },
-    "public_transport": { "x": 0, "y": 4 },
-    "stocks": { "x": 0, "y": 5 },
-    "text_of_the_day": { "x": 0, "y": 6 },
-    "daily-news": { "x": 0, "y": 7 }
-  }
+  // private widgetPositions = {
+  //   "weather": { "x": 0, "y": 0 },
+  //   "nasa": { "x": 0, "y": 1 },
+  //   "cartoon": { "x": 0, "y": 2 },
+  //   "maps": { "x": 0, "y": 3 },
+  //   "public_transport": { "x": 0, "y": 4 },
+  //   "stocks": { "x": 0, "y": 5 },
+  //   "text_of_the_day": { "x": 0, "y": 6 },
+  //   "daily-news": { "x": 0, "y": 7 }
+  // }
   cols: number = 6;
   rowHeight: number = 100;
   // layout: KtdGridLayout = [

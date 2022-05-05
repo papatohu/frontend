@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {MapsConfiguration, UserConfig} from "../../interfaces/user-config";
+import {MapsConfiguration, Position, UserConfig} from "../../interfaces/user-config";
 import {map, Observable} from "rxjs";
 import {KtdGridLayout} from "@katoid/angular-grid-layout";
 
@@ -35,6 +35,7 @@ export class UserConfigService {
     userConfig.maps.mapsConfiguration.mode = mode
     userConfig.maps.mapsConfiguration.avoid = avoid
     userConfig.maps.mapsConfiguration.measurements = measurements
+    this.userConfig = userConfig
     this.http.post<UserConfig>("/updateConfig/" + this.getUserId(), userConfig).subscribe()
   }
 
@@ -52,5 +53,24 @@ export class UserConfigService {
     //return TestUser's Id
     const testUserId = "7dbb5bc6-bad3-40d5-badb-c3326e1eed63"
     return testUserId
+  }
+
+  postNewWidgetPositionsToBackend(layout: KtdGridLayout):void {
+    let userConfig:UserConfig = this.userConfig
+    userConfig.weather.position = {x: layout[0].x, y: layout[0].y}
+    userConfig.nasa.position = {x: layout[1].x, y: layout[1].y}
+    userConfig.cartoon.position = {x: layout[2].x, y: layout[2].y}
+    userConfig.maps.position = {x: layout[3].x, y: layout[3].y}
+    userConfig.public_transport.position = {x: layout[4].x, y: layout[4].y}
+    userConfig.stocks.position = {x: layout[5].x, y: layout[5].y}
+    userConfig.text_of_the_day.position = {x: layout[6].x, y: layout[6].y}
+    userConfig["daily-news"].position = {x: layout[7].x, y: layout[7].y}
+    this.userConfig = userConfig
+    this.http.post<UserConfig>("/updateConfig/" + this.getUserId(), userConfig).subscribe()
+  }
+
+  getCityArray():Observable<string[]> {
+    let array = this.http.get<string[]>("/getConfig/cityArray").pipe(map((cityArray:string[])=>{return cityArray}))
+    return array
   }
 }

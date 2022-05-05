@@ -2,7 +2,7 @@
 <ktd-grid [cols]="cols"
           [rowHeight]="rowHeight"
           [layout]="layout"
-          (layoutUpdated)="onLayoutUpdated($event)">
+          (layoutUpdated)="postNewWidgetPositionsToBackend($event)">
   <ktd-grid-item *ngFor="let item of layout; trackBy:trackById" [id]="item.id"
                  [draggable]="true"
                  [resizable]="false">
