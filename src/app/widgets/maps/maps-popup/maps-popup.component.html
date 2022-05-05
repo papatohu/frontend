@@ -3,7 +3,7 @@
 
     <mat-form-field class="example-full-width" appearance="fill">
       <mat-label>Origin</mat-label>
-      <input matInput placeholder="e.g. Paris" name="origin" [(ngModel)]="origin">
+      <input matInput placeholder="e.g. Köln" name="origin" [(ngModel)]="origin">
     </mat-form-field>
 
     <mat-form-field class="example-full-width" appearance="fill">
@@ -14,9 +14,9 @@
     <mat-form-field appearance="fill">
       <mat-label>Mode</mat-label>
       <mat-select [(value)]="mode">
-        <mat-option value="Car">Car</mat-option>
-        <mat-option value="Foot">Foot</mat-option>
-        <mat-option value="Bicycle">Bicycle</mat-option>
+        <mat-option value="driving">Car</mat-option>
+        <mat-option value="walking">Foot</mat-option>
+        <mat-option value="bicycling">Bike</mat-option>
       </mat-select>
     </mat-form-field>
 
@@ -36,8 +36,8 @@
     <mat-form-field appearance="fill">
       <mat-label>Measurements</mat-label>
       <mat-select [(value)]="measurements">
-        <mat-option value="Metric">Metric</mat-option>
-        <mat-option value="Imperial">Imperial</mat-option>
+        <mat-option value="metric">Metric</mat-option>
+        <mat-option value="imperial">Imperial</mat-option>
       </mat-select>
     </mat-form-field>
 

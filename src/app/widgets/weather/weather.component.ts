@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-weather',
@@ -20,21 +21,15 @@ export class WeatherComponent implements OnInit {
     };
   }
 
-  altpressed = false;
   ngOnInit(): void {
-    document.addEventListener("keydown", e => {
-      if (e.keyCode === 18)
-        this.altpressed = true;
-    });
-    document.addEventListener("keyup", e => {
-      if (e.keyCode === 18)
-        this.altpressed = false;
-    });
     this.getMyLocation();
   }
 
-  public getWeather(url: string): void {
-    this.http.get<any>(url).subscribe(res => {
+  public getWeather(url: string): Observable<any> {
+    return this.http.get<any>(url)
+  }
+  public setWeather(observable: Observable<any>): void {
+    observable.subscribe(res => {
       if (res.weather[0].main == 'Clouds') {
         this.WeatherWidget$.weather = 'wolkig'
       }
@@ -49,7 +44,7 @@ export class WeatherComponent implements OnInit {
   successCallback = (position: any) => {
     var x = position.coords.latitude;
     var y = position.coords.longitude;
-    this.getWeather("http://api.openweathermap.org/data/2.5/weather?lat=" + x + "&lon=" + y + "&appid=332468f7d43cc6c6858ca81118204cdd")
+    this.setWeather(this.getWeather("http://api.openweathermap.org/data/2.5/weather?lat=" + x + "&lon=" + y + "&appid=332468f7d43cc6c6858ca81118204cdd"))
     //this.getAddress(x, y).then(console.log)
     this.displayLocation(x, y)
   };

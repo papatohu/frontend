@@ -1,5 +1,5 @@
 <div class="widget">
-<ng-container *ngIf="data$ | async as data">
+<ng-container *ngIf="data$ | async as data; else loading">
   <apx-chart
     [series]="data.series"
     [chart]="chartOptions.chart"
@@ -8,4 +8,7 @@
     [title]="data.title"
   ></apx-chart>
 </ng-container>
+<ng-template #loading>
+  <mat-spinner></mat-spinner>
+</ng-template>
 </div>

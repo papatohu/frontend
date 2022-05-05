@@ -21,6 +21,7 @@ describe('WeatherComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(WeatherComponent);
     component = fixture.componentInstance;
+    component = TestBed.get(WeatherComponent)
     fixture.detectChanges();
   });
 
@@ -43,4 +44,12 @@ describe('WeatherComponent', () => {
     console.log(compiled)
     expect(compiled.querySelector('.temperaturecolumn h1')?.textContent).toMatch("..*°");
   });
+
+  it("getWeather method works as expected", done  => {
+    const url = "http://api.openweathermap.org/data/2.5/weather?lat=" + 53 + "&lon=" + 14 + "&appid=332468f7d43cc6c6858ca81118204cdd"
+    const obs = component.getWeather(url)
+    obs.subscribe(_=>{console.log("Hi");})
+    done();
+  })
 });
+//https://www.youtube.com/watch?v=4JVnSkR04tM

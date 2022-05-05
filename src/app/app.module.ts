@@ -26,6 +26,7 @@ import { MapsPopupComponent } from './widgets/maps/maps-popup/maps-popup.compone
 import { CartoonPopupComponent } from './widgets/cartoon/cartoon-popup/cartoon-popup.component';
 import {NgApexchartsModule} from "ng-apexcharts";
 import { DailyNewsComponent } from './widgets/daily-news/daily-news.component';
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 
 @NgModule({
   declarations: [
@@ -44,20 +45,21 @@ import { DailyNewsComponent } from './widgets/daily-news/daily-news.component';
     CartoonPopupComponent,
     DailyNewsComponent
   ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    ReactiveFormsModule,
-    KtdGridModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    MatDialogModule,
-    MatDialogModule,
-    MatInputModule,
-    MatSelectModule,
-    MatButtonModule,
-    NgApexchartsModule
-  ],
+    imports: [
+        BrowserModule,
+        FormsModule,
+        ReactiveFormsModule,
+        KtdGridModule,
+        HttpClientModule,
+        BrowserAnimationsModule,
+        MatDialogModule,
+        MatDialogModule,
+        MatInputModule,
+        MatSelectModule,
+        MatButtonModule,
+        NgApexchartsModule,
+        MatProgressSpinnerModule
+    ],
   exports: [
     MatDialogModule,
     MatInputModule,
