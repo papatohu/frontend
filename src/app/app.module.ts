@@ -27,6 +27,7 @@ import { CartoonPopupComponent } from './widgets/cartoon/cartoon-popup/cartoon-p
 import {NgApexchartsModule} from "ng-apexcharts";
 import { DailyNewsComponent } from './widgets/daily-news/daily-news.component';
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import {MatAutocompleteModule} from "@angular/material/autocomplete";
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
         MatSelectModule,
         MatButtonModule,
         NgApexchartsModule,
-        MatProgressSpinnerModule
+        MatProgressSpinnerModule,
+        MatAutocompleteModule
     ],
   exports: [
     MatDialogModule,

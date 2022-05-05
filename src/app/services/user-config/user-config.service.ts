@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {MapsConfiguration, UserConfig} from "../../interfaces/user-config";
 import {map, Observable} from "rxjs";
-import {KtdGridLayoutItem} from "@katoid/angular-grid-layout/lib/grid.definitions";
 import {KtdGridLayout} from "@katoid/angular-grid-layout";
 
 @Injectable({
@@ -53,10 +52,5 @@ export class UserConfigService {
     //return TestUser's Id
     const testUserId = "7dbb5bc6-bad3-40d5-badb-c3326e1eed63"
     return testUserId
-  }
-  test():void{
-    var fs = require("fs");
-    var text = fs.readFileSync("./mytext.txt");
-    var textByLine = text.split("\n")
   }
 }

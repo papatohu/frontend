@@ -3,12 +3,22 @@
 
     <mat-form-field class="example-full-width" appearance="fill">
       <mat-label>Origin</mat-label>
-      <input matInput placeholder="e.g. Köln" name="origin" [(ngModel)]="origin">
+      <input matInput placeholder="e.g. Köln" name="origin" [(ngModel)]="origin" [matAutocomplete]="auto" [formControl]="myControl" type="text">
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+          {{option}}
+        </mat-option>
+      </mat-autocomplete>
     </mat-form-field>
 
     <mat-form-field class="example-full-width" appearance="fill">
       <mat-label>Destination</mat-label>
-      <input matInput placeholder="e.g. Frankfurt" name="destination" [(ngModel)]="destination">
+      <input matInput placeholder="e.g. Frankfurt" name="destination" [(ngModel)]="destination" [matAutocomplete]="autoc" [formControl]="myControl2" type="text">
+      <mat-autocomplete #autoc="matAutocomplete">
+        <mat-option *ngFor="let option of filteredOptions2 | async" [value]="option">
+          {{option}}
+        </mat-option>
+      </mat-autocomplete>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
