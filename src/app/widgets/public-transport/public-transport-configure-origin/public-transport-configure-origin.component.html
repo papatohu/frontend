@@ -1,0 +1,8 @@
+<form class="example-form" (ngSubmit)="onSubmit($event)">
+
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Origin</mat-label>
+    <input matInput placeholder="e.g. Köln Hbf" name="origin" [(ngModel)]="origin" type="text">
+  </mat-form-field>
+  <button mat-raised-button color="primary" type="submit">Save</button>
+</form>

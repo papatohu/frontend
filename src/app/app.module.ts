@@ -28,6 +28,9 @@ import {NgApexchartsModule} from "ng-apexcharts";
 import { DailyNewsComponent } from './widgets/daily-news/daily-news.component';
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {MatAutocompleteModule} from "@angular/material/autocomplete";
+import { PublicTransportPopupComponent } from './widgets/public-transport/public-transport-popup/public-transport-popup.component';
+import { PublicTransportConfigureOriginComponent } from './widgets/public-transport/public-transport-configure-origin/public-transport-configure-origin.component';
+import {ScrollingModule} from "@angular/cdk/scrolling";
 
 @NgModule({
   declarations: [
@@ -44,7 +47,9 @@ import {MatAutocompleteModule} from "@angular/material/autocomplete";
     PopupNasaComponent,
     MapsPopupComponent,
     CartoonPopupComponent,
-    DailyNewsComponent
+    DailyNewsComponent,
+    PublicTransportPopupComponent,
+    PublicTransportConfigureOriginComponent
   ],
     imports: [
         BrowserModule,
@@ -60,7 +65,8 @@ import {MatAutocompleteModule} from "@angular/material/autocomplete";
         MatButtonModule,
         NgApexchartsModule,
         MatProgressSpinnerModule,
-        MatAutocompleteModule
+        MatAutocompleteModule,
+        ScrollingModule
     ],
   exports: [
     MatDialogModule,

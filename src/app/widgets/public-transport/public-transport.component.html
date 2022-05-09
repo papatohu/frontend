@@ -2,17 +2,29 @@
 
            <!--  <button (click)="getData()">Fetch Data</button>
            -->
-
-  <ng-container *ngIf="$data | async as data">
-    <ng-container *ngIf="data | async as data2">
-      <table>
-        <tr *ngFor="let element of data2">
-          <td>{{element["name"]}}</td>
-          <td>{{element["dateTime"]}}</td>
+  <button mat-raised-button color="accent" (click) = "configureOrigin()" class="button">Configure origin</button>
+  <table>
+  <ng-container *ngIf="$data | async as data1">
+    <ng-container *ngIf="data1 | async as data2">
+      <ng-container *ngFor="let data3 of data2">
+        <tr>
+        <td>{{data3.trainName}}:</td>
+        <ng-container *ngIf="data3.observableAnyList | async as data4">
+          <td>{{data4[data4.length-1]["stopName"]}}</td>
+          <td>
+            <ng-container *ngFor="let data5 of data4">
+              <ng-container *ngIf="data5['stopName']==data3.stopName">
+                {{data5["depTime"]}} at {{data3.stopName}}
+              </ng-container>
+            </ng-container>
+          </td>
+          <td><button mat-raised-button color="accent" (click) = "moreInfoDialog(data3)" class="button">More Info</button></td>
+        </ng-container>
         </tr>
-      </table>
+      </ng-container>
     </ng-container>
   </ng-container>
+</table>
 </div>
 <!--
 <div class="gallery" *ngFor="let image of data">

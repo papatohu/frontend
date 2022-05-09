@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 //import * as xml2js from "xml2js";
 import { NewsRss } from './news-rss';
 import {map, Observable} from "rxjs";
@@ -23,7 +23,7 @@ export class DailyNewsComponent implements OnInit{
       observe: "body",
       responseType: "text"
     };
-    return this.http.get("/newsticker.rdf", {responseType : "text"}).pipe(map((res: any) => {
+    return this.http.get("/newsticker.rdf", {responseType: "text"}).pipe(map((res: any) => {
       const parser = new XMLParser();
       let jObj = parser.parse(res);
       let test = jObj.rss.channel.item

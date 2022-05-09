@@ -3,7 +3,7 @@ export interface UserConfig {
   nasa:{position:Position},
   cartoon:{position:Position},
   maps:{position:Position, mapsConfiguration:MapsConfiguration},
-  public_transport:{position:Position},
+  public_transport:{position:Position, origin:string},
   stocks:{position:Position},
   text_of_the_day:{position:Position},
   "daily-news":{position:Position}

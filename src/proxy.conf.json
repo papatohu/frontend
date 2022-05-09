@@ -34,5 +34,11 @@
     "secure": false,
     "changeOrigin": true,
     "logLevel": "debug"
+  },
+  "/freeplan/*": {
+    "target": "https://api.deutschebahn.com",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
   }
 }

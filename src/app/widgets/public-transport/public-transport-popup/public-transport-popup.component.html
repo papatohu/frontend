@@ -1,0 +1,18 @@
+<table>
+  <ng-container *ngIf="data.observableAnyList | async as data2">
+    <tr>
+      {{data.trainName}}
+    </tr>
+    <ng-container *ngFor="let data3 of data2">
+      <tr>
+        {{data3["stopName"]}}
+        <td>
+          <ng-container *ngIf="data3['depTime']==null">
+          {{data3["arrTime"]}}
+          </ng-container>
+          {{data3["depTime"]}}
+        </td>
+      </tr>
+    </ng-container>
+  </ng-container>
+</table>

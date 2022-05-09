@@ -73,4 +73,15 @@ export class UserConfigService {
     let array = this.http.get<string[]>("/getConfig/cityArray").pipe(map((cityArray:string[])=>{return cityArray}))
     return array
   }
+
+  getPublicTransportOrigin() {
+    return this.userConfig.public_transport.origin
+  }
+  setPublicTransportOrigin(origin:string) {
+    this.userConfig.public_transport.origin = origin
+    this.postUserConfig()
+  }
+  postUserConfig() {
+    this.http.post("/updateConfig/" + this.getUserId(), this.userConfig).subscribe()
+  }
 }
