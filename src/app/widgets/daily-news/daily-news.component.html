@@ -2,6 +2,14 @@
   <button (click)="GetRssFeedData()">
     Get Rss Data
   </button>
+  <ng-container *ngIf="$data | async as data else loading">
+    <ng-container *ngFor="let dat of data">
+      <div>{{dat.link}}</div>
+    </ng-container>
+  </ng-container>
+  <ng-template #loading>
+    <mat-spinner></mat-spinner>
+  </ng-template>
 <!--
   <h2>
     {{RssData?.rss.channel[0].title[0]}}

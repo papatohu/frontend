@@ -28,5 +28,11 @@
     "secure": false,
     "changeOrigin": true,
     "logLevel": "debug"
+  },
+  "/newsticker.rdf": {
+    "target": "https://www.tagesschau.de",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
   }
 }

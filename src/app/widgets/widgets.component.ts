@@ -4,6 +4,7 @@ import {UserConfigService} from "../services/user-config/user-config.service";
 import {Observable} from "rxjs";
 import {OutputType} from "../services/widgets/stocks/stocks.service";
 import {KtdGridLayoutItem} from "@katoid/angular-grid-layout/lib/grid.definitions";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-widgets',
@@ -12,10 +13,12 @@ import {KtdGridLayoutItem} from "@katoid/angular-grid-layout/lib/grid.definition
 })
 export class WidgetsComponent implements OnInit{
   ngOnInit(): void {
+    this.http.get("/info.0.json").subscribe(res=>{console.log("RESULT:");console.log(res)})
+    this.http.get("/api/random").subscribe(res=>{console.log("RESULT2:");console.log(res)})
     this.data$ = this.userService.getUser()
   }
   public data$: Observable<KtdGridLayout> | undefined;
-  constructor(private userService:UserConfigService) {
+  constructor(private userService:UserConfigService, private http:HttpClient) {
   }
   postNewWidgetPositionsToBackend(layout: KtdGridLayout) {
     console.log(layout)
