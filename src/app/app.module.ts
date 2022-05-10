@@ -31,7 +31,16 @@ import {MatAutocompleteModule} from "@angular/material/autocomplete";
 import { PublicTransportPopupComponent } from './widgets/public-transport/public-transport-popup/public-transport-popup.component';
 import { PublicTransportConfigureOriginComponent } from './widgets/public-transport/public-transport-configure-origin/public-transport-configure-origin.component';
 import {ScrollingModule} from "@angular/cdk/scrolling";
+import { LoginComponent } from './authorization/login/login.component';
+import {RouterModule, Routes} from "@angular/router";
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { RegisterComponent } from './authorization/register/register.component';
 
+const routes: Routes = [
+  {path: 'login', component: LoginComponent},
+  {path: '', component: DashboardComponent},
+  {path: 'register', component: RegisterComponent}
+]
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,7 +58,10 @@ import {ScrollingModule} from "@angular/cdk/scrolling";
     CartoonPopupComponent,
     DailyNewsComponent,
     PublicTransportPopupComponent,
-    PublicTransportConfigureOriginComponent
+    PublicTransportConfigureOriginComponent,
+    LoginComponent,
+    DashboardComponent,
+    RegisterComponent
   ],
     imports: [
         BrowserModule,
@@ -66,7 +78,8 @@ import {ScrollingModule} from "@angular/cdk/scrolling";
         NgApexchartsModule,
         MatProgressSpinnerModule,
         MatAutocompleteModule,
-        ScrollingModule
+        ScrollingModule,
+      RouterModule.forRoot(routes)
     ],
   exports: [
     MatDialogModule,

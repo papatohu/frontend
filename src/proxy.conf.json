@@ -40,5 +40,11 @@
     "secure": false,
     "changeOrigin": true,
     "logLevel": "debug"
+  },
+  "/newUser/*": {
+    "target": "https://localhost:8443",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
   }
 }
