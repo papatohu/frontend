@@ -1,4 +1,5 @@
 ![Code coverage Badge](https://img.shields.io/badge/coverage-15.9%25-orange)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/e81d4d23bcbf4b13ad04743258eaee25)](https://www.codacy.com/gh/papatohu/frontend/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=papatohu/frontend&amp;utm_campaign=Badge_Grade)
 # NewDashboard
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.3.
