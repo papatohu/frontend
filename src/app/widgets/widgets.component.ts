@@ -28,14 +28,16 @@ export class WidgetsComponent implements OnInit{
     //set widgetPositions Object
   }
   private widgetPositions = {
-    "weather": { "x": 0, "y": 0 },
+    "weather": { "x": 3, "y": 5 },
     "nasa": { "x": 1.5, "y": 0 },
     "cartoon": { "x": 3, "y": 0 },
     "maps": { "x": 4.5, "y": 0 },
-    "public_transport": { "x": 0, "y": 4 },
+    "public_transport": { "x": 0, "y": 0 },
     "stocks": { "x": 1.5, "y": 4 },
     "text_of_the_day": { "x": 3, "y": 4 },
-    "daily-news": { "x": 4.5, "y": 4 }
+    "daily-news": { "x": 4.5, "y": 4 },
+    "chuck": { "x": 1.5, "y": 5 },
+    "tronaldDump": { "x": 4.5, "y": 5 },
   }
   cols: number = 6;
   rowHeight: number = 100;
@@ -50,13 +52,18 @@ export class WidgetsComponent implements OnInit{
     //Maps-Widget
     {id: '4', x: this.widgetPositions.maps.x, y: this.widgetPositions.maps.y, w:1.5,h:4},
     //Public-Transport-Widget
-    {id: '5', x: this.widgetPositions.public_transport.x, y: this.widgetPositions.public_transport.y, w:1.5,h:4},
+    {id: '5', x: this.widgetPositions.public_transport.x, y: this.widgetPositions.public_transport.y, w:1.5,h:12},
     //Stocks-Widget
     {id: '6', x: this.widgetPositions.stocks.x, y: this.widgetPositions.stocks.y, w:1.5,h:4},
     //Text-of-the-day-Widget
     {id: '7', x: this.widgetPositions.text_of_the_day.x, y: this.widgetPositions.text_of_the_day.y, w:1.5,h:4},
     // Daily-News-Widget
     {id: '8', x: this.widgetPositions["daily-news"].x, y: this.widgetPositions["daily-news"].y, w:1.5,h:4},
+    //Chuck-Widget
+    {id: '9', x: this.widgetPositions.chuck.x, y: this.widgetPositions.chuck.y, w:1.5,h:4},
+    //Tronald-Dump-Widget
+    {id: '10', x: this.widgetPositions.tronaldDump.x, y: this.widgetPositions.tronaldDump.y, w:1.5,h:4},
+
   ];
   trackById = ktdTrackById
 }
