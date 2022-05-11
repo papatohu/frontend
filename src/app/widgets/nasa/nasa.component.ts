@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {PopupNasaComponent} from "./popup-nasa/popup-nasa.component";
-import {NasaService} from "../../services/nasa/nasa.service";
+import {NasaService} from "../../services/widgets/nasa/nasa.service";
 
 
 @Component({

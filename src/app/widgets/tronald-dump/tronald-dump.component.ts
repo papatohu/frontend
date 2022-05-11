@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {TrumpService} from "../../services/widgets/trump/trump.service";
 
 @Component({
   selector: 'app-tronald-dump',
@@ -7,14 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TronaldDumpComponent implements OnInit {
 
-  constructor() { }
+  trump:any;
+  constructor(public TrumpService:TrumpService) { }
 
 
   ngOnInit(): void {
+    this.TrumpService.getData().subscribe(
+      trump => {
+        this.trump = trump.value;
+      }
+    )
   }
 
-  getQuote() {
-    fetch('io.tronalddump.api/random')
-  }
 
 }

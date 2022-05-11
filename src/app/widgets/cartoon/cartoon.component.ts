@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {CartoonService} from "../../services/cartoon/cartoon.service";
+import {CartoonService} from "../../services/widgets/cartoon/cartoon.service";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {MapsPopupComponent} from "../maps/maps-popup/maps-popup.component";
 import {CartoonPopupComponent} from "./cartoon-popup/cartoon-popup.component";

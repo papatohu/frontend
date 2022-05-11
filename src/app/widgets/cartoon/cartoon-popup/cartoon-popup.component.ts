@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {CartoonService} from "../../../services/cartoon/cartoon.service";
+import {CartoonService} from "../../../services/widgets/cartoon/cartoon.service";
 
 @Component({
   selector: 'app-cartoon-popup',

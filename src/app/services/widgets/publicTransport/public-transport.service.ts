@@ -26,6 +26,10 @@ export class PublicTransportService {
                       let detailsId: string = res3["detailsId"]
                       detailsId = this.parseUrlProperty(detailsId)
                       const ret1 = this.htpp.get(this.journeyUrl + detailsId).pipe(map((res4:any) => {
+                        for(let i = 0; i < res4.length; i++) {
+                          res4[i].stopName = res4[i].stopName.replace("&#x0028;", " (")
+                          res4[i].stopName = res4[i].stopName.replace("&#x0029;", ") ")
+                        }
                         return res4
                       }))
                       const retType:RetType = {stopName: res3["stopName"],origin: res[0]["name"],trainName: trainName, observableAnyList: ret1}

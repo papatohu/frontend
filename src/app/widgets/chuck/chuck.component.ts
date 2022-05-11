@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ChuckService} from "../../services/widgets/chuck/chuck.service";
 
 @Component({
   selector: 'app-chuck',
@@ -7,12 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChuckComponent implements OnInit {
 
-  constructor() { }
+  chuck: any;
+  constructor(public chuckService:ChuckService) { }
 
   ngOnInit(): void {
+
+    this.chuckService.getData().subscribe(
+      chuck => {
+        this.chuck=chuck.value;
+      }
+    )
+
   }
 
-  getJoke() {
-    fetch('https://api.chucknorris.io/jokes/random')
-  }
 }

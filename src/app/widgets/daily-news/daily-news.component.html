@@ -1,23 +1,19 @@
 <div class="widget">
-  <button (click)="GetRssFeedData()">
-    Get Rss Data
-  </button>
+
+  <div class="movingText">
   <ng-container *ngIf="$data | async as data else loading">
     <ng-container *ngFor="let dat of data">
-      <div>{{dat.link}}</div>
+
+      <ng-container *ngIf="data.indexOf(dat)<20">
+
+        <div class="line{{data.indexOf(dat)}}">{{dat.title}}</div>
+
+
+      </ng-container>
     </ng-container>
   </ng-container>
   <ng-template #loading>
     <mat-spinner></mat-spinner>
   </ng-template>
-<!--
-  <h2>
-    {{RssData?.rss.channel[0].title[0]}}
-  </h2>
-  Total Item: {{RssData?.rss.channel[0].item.length}}
-  <ul>
-    <li *ngFor="let o of RssData?.rss.channel[0].item"><a href="{{o.link[0]}}">{{o.title[0]}}</a></li>
-
-  </ul>
-      -->
+  </div>
 </div>
