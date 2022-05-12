@@ -15,9 +15,9 @@ export class WidgetsComponent implements OnInit{
   ngOnInit(): void {
     this.http.get("/info.0.json").subscribe(res=>{console.log("RESULT:");console.log(res)})
     this.http.get("/api/random").subscribe(res=>{console.log("RESULT2:");console.log(res)})
-    this.data$ = this.userService.getUser()
+    this.layout2 = this.userService.getUserGridLayoutMapping()
   }
-  public data$: Observable<KtdGridLayout> | undefined;
+  public layout2: KtdGridLayout | undefined
   constructor(private userService:UserConfigService, private http:HttpClient) {
   }
   postNewWidgetPositionsToBackend(layout: KtdGridLayout) {

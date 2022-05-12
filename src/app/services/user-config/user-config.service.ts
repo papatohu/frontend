@@ -10,11 +10,16 @@ import {KtdGridLayout} from "@katoid/angular-grid-layout";
 export class UserConfigService {
 
   constructor(private http:HttpClient) { }
+  private userId!:string
   private userConfig!:UserConfig
-  public getUser():Observable<KtdGridLayout> {
-    const userId = this.getUserId()
-    return this.http.get<UserConfig>("/getConfig/" + userId).pipe(map((userConfig:UserConfig) => {
-      this.userConfig = userConfig
+  public setUserConfig(userConfig:UserConfig) {
+    this.userConfig = userConfig
+  }
+  public setUserId(userId:string) {
+    this.userId = userId
+  }
+  public getUserGridLayoutMapping():KtdGridLayout {
+    const userConfig = this.userConfig
       let layout:KtdGridLayout = []
       userConfig.weather==undefined?null:layout.push({id:"1",x:userConfig.weather.position.x,y:userConfig.weather.position.y,w:2,h:2})
       userConfig.nasa==undefined?null:layout.push({id:"2",x:userConfig.nasa.position.x,y:userConfig.nasa.position.y,w:1.5,h:3})
@@ -25,7 +30,6 @@ export class UserConfigService {
       userConfig.text_of_the_day==undefined?null:layout.push({id:"7",x:userConfig.text_of_the_day.position.x,y:userConfig.text_of_the_day.position.y,w:1,h:1})
       userConfig["daily-news"]==undefined?null:layout.push({id:"8",x:userConfig["daily-news"].position.x,y:userConfig["daily-news"].position.y,w:1,h:1})
       return layout
-    }))
   }
 
   public postMapsConfig(origin:string, destination:string, mode:string, avoid:string[], measurements:string) {
@@ -36,7 +40,7 @@ export class UserConfigService {
     userConfig.maps.mapsConfiguration.avoid = avoid
     userConfig.maps.mapsConfiguration.measurements = measurements
     this.userConfig = userConfig
-    this.http.post<UserConfig>("/updateConfig/" + this.getUserId(), userConfig).subscribe()
+    this.http.post<UserConfig>("/updateConfig/" + this.userId, userConfig).subscribe()
   }
 
   public getMapsData():MapsConfiguration {
@@ -49,11 +53,11 @@ export class UserConfigService {
     return mapsConfiguration
   }
 
-  private getUserId():String{
-    //return TestUser's Id
-    const testUserId = "7dbb5bc6-bad3-40d5-badb-c3326e1eed63"
-    return testUserId
-  }
+  // private getUserId():String{
+  //   //return TestUser's Id
+  //   const testUserId = "7dbb5bc6-bad3-40d5-badb-c3326e1eed63"
+  //   return testUserId
+  // }
 
   postNewWidgetPositionsToBackend(layout: KtdGridLayout):void {
     let userConfig:UserConfig = this.userConfig
@@ -66,7 +70,7 @@ export class UserConfigService {
     userConfig.text_of_the_day.position = {x: layout[6].x, y: layout[6].y}
     userConfig["daily-news"].position = {x: layout[7].x, y: layout[7].y}
     this.userConfig = userConfig
-    this.http.post<UserConfig>("/updateConfig/" + this.getUserId(), userConfig).subscribe()
+    this.http.post<UserConfig>("/updateConfig/" + this.userId, userConfig).subscribe()
   }
 
   getCityArray():Observable<string[]> {
@@ -82,6 +86,6 @@ export class UserConfigService {
     this.postUserConfig()
   }
   postUserConfig() {
-    this.http.post("/updateConfig/" + this.getUserId(), this.userConfig).subscribe()
+    this.http.post("/updateConfig/" + this.userId, this.userConfig).subscribe()
   }
 }

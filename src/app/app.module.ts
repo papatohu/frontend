@@ -37,7 +37,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { RegisterComponent } from './authorization/register/register.component';
 
 const routes: Routes = [
-  {path: 'login', component: LoginComponent},
+  {path: 'logon', component: LoginComponent},
   {path: '', component: DashboardComponent},
   {path: 'register', component: RegisterComponent}
 ]

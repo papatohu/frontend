@@ -23,7 +23,6 @@ export class RegisterComponent implements OnInit {
       username: ['', Validators.required],
       password: ['', [Validators.required, Validators.pattern("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$")]]
     });
-    console.log(sha256("ABC"))
   }
 
   // convenience getter for easy access to form fields

@@ -1,17 +1,22 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpParams} from "@angular/common/http";
 import {UserUtils} from "../../../assets/files/userUtils";
 //import * as crypto from 'crypto'
 import { sha256, sha224 } from 'js-sha256';
+import {map} from "rxjs";
+import {User} from "../../interfaces/user-config";
+import {UserConfigService} from "../user-config/user-config.service";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserManagementService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient, private userConfigService:UserConfigService, private router:Router) { }
 
   newUserUrl:string = "/newUser"
+  loginUrl:string = "/login/"
   userId:string = ""
   createNewUser(username:string, password:string){
     password = this.hashPassword(password)
@@ -28,5 +33,15 @@ export class UserManagementService {
     const userConfig = UserUtils.newUserBody
     const userBody = {"username": username, "pw": password,"tileConfigs": userConfig}
     return userBody
+  }
+
+  login(username: string, password: string) {
+    return this.http.get<User>(this.loginUrl + username + "/" + sha256(password)).pipe(map((res:any)=>{return res}))
+  }
+
+  successfulLogin(userJson: User) {
+    this.userConfigService.setUserConfig(userJson.tileConfigs)
+    this.userConfigService.setUserId(userJson.id)
+    this.router.navigate([""])
   }
 }
