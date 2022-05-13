@@ -2,7 +2,7 @@
 
            <!--  <button (click)="getData()">Fetch Data</button>
            -->
-  <h1>Public Transport ~ origin from {{origin}}</h1>
+  <h1>Public Transport ~ origin from {{origin | async}}</h1>
   <button mat-raised-button color="accent" (click) = "configureOrigin()" class="button">Configure origin</button>
   <table>
   <ng-container *ngIf="$data | async as data1">
