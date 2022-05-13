@@ -65,7 +65,6 @@ export class StocksService {
         }
         const output = {series: series, title: title}
         observer.next(output);
-        console.log("am done");
         observer.complete(); // to show we are done with our processing
         // observer.error(new Error("error message"));
       }, 2000);

@@ -19,3 +19,9 @@ export interface MapsConfiguration {
   avoid:string[]
   measurements:string
 }
+export interface User {
+  id: string
+  username: string
+  pw: string
+  tileConfigs: UserConfig
+}

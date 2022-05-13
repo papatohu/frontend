@@ -31,7 +31,8 @@ export class PublicTransportComponent implements OnInit {
   $data: Observable<Observable<RetType[]>> | undefined
 
   getData(){
-    this.$data = this.publicTransportService.getInformationArray(this.origin)
+    //this.$data = this.publicTransportService.getInformationArray(this.origin)
+    this.origin?.subscribe(res=>{this.$data = this.publicTransportService.getInformationArray(res)})
     //const url ='https://www.kvv.de/tunnelEfaDirect.php?action=XSLT_DM_REQUEST&outputFormat=JSON&language=de&name_dm=7001004&type_dm=stopID&useRealtime=1'
     //const url = '/tunnelEfaDirect.php?action=XSLT_STOPFINDER_REQUEST&coordOutputFormat=WGS84[dd.ddddd]&name_sf=Karlsruhe%20Europaplatz&language=de&outputFormat=JSON&type_sf=stop&useRealtime=1'
     //const url = '/tunnelEfaDirect.php?action=XSLT_STOPFINDER_REQUEST&coordOutputFormat=JSON&name_sf=Karlsruhe%20Europaplatz&language=de&outputFormat=JSON&type_sf=stop&useRealtime=1&stopID=Karlsruhe%20central%20station'
@@ -41,7 +42,7 @@ export class PublicTransportComponent implements OnInit {
     const detailUrl = 'https://api.deutschebahn.com/freeplan/v1/departureBoard/8000191?date=2022-05-05'
   }
 
-  origin:string = ""
+  origin:Observable<string> | undefined
   moreInfoDialog(par:RetType) {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.autoFocus = true;

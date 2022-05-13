@@ -31,9 +31,19 @@ import {MatAutocompleteModule} from "@angular/material/autocomplete";
 import { PublicTransportPopupComponent } from './widgets/public-transport/public-transport-popup/public-transport-popup.component';
 import { PublicTransportConfigureOriginComponent } from './widgets/public-transport/public-transport-configure-origin/public-transport-configure-origin.component';
 import {ScrollingModule} from "@angular/cdk/scrolling";
+import { LoginComponent } from './authorization/login/login.component';
+import {RouterModule, Routes} from "@angular/router";
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { RegisterComponent } from './authorization/register/register.component';
+import {SafePipe} from "./widgets/maps/SafePipe";
 import { ChuckComponent } from './widgets/chuck/chuck.component';
 import { TronaldDumpComponent } from './widgets/tronald-dump/tronald-dump.component';
 
+const routes: Routes = [
+  {path: 'logon', component: LoginComponent},
+  {path: '', component: DashboardComponent},
+  {path: 'register', component: RegisterComponent}
+]
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,6 +62,10 @@ import { TronaldDumpComponent } from './widgets/tronald-dump/tronald-dump.compon
     DailyNewsComponent,
     PublicTransportPopupComponent,
     PublicTransportConfigureOriginComponent,
+    LoginComponent,
+    DashboardComponent,
+    RegisterComponent,
+    SafePipe,
     ChuckComponent,
     TronaldDumpComponent
   ],
@@ -70,7 +84,8 @@ import { TronaldDumpComponent } from './widgets/tronald-dump/tronald-dump.compon
         NgApexchartsModule,
         MatProgressSpinnerModule,
         MatAutocompleteModule,
-        ScrollingModule
+        ScrollingModule,
+        RouterModule.forRoot(routes)
     ],
   exports: [
     MatDialogModule,

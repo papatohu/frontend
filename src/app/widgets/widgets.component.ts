@@ -13,19 +13,15 @@ import {HttpClient} from "@angular/common/http";
 })
 export class WidgetsComponent implements OnInit{
   ngOnInit(): void {
-    this.http.get("/info.0.json").subscribe(res=>{console.log("RESULT:");console.log(res)})
-    this.http.get("/api/random").subscribe(res=>{console.log("RESULT2:");console.log(res)})
-    this.data$ = this.userService.getUser()
+    this.userService.initUser()
+    this.layout2 = this.userService.getUserGridLayoutMapping()
   }
-  public data$: Observable<KtdGridLayout> | undefined;
+  public layout2: Observable<KtdGridLayout> | undefined
   constructor(private userService:UserConfigService, private http:HttpClient) {
   }
   postNewWidgetPositionsToBackend(layout: KtdGridLayout) {
     console.log(layout)
     this.userService.postNewWidgetPositionsToBackend(layout)
-  }
-  backendCall() {
-    //set widgetPositions Object
   }
   private widgetPositions = {
     "weather": { "x": 3, "y": 5 },

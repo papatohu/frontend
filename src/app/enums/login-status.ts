@@ -1,0 +1,5 @@
+export enum LoginStatus {
+  NOT_LOGGED_IN= "NOT_LOGGED_IN",
+  LOGGED_IN_RELOADED = "LOGGED_IN_RELOADED",
+  LOGGED_IN = "LOGGED_IN"
+}
