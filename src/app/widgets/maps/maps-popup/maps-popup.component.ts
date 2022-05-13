@@ -4,6 +4,7 @@ import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {UserConfigService} from "../../../services/user-config/user-config.service";
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {map, Observable, startWith} from "rxjs";
+import {UserConfig} from "../../../interfaces/user-config";
 
 @Component({
   selector: 'app-maps-popup',
@@ -26,6 +27,14 @@ export class MapsPopupComponent implements OnInit {
   cityArray: string[]=[]
   onSubmit(event: any) {
     this.userConfigService.postMapsConfig(this.origin, this.destination, this.mode, this.avoid, this.measurements)
+    this.userConfigService.setUserConfig(this.userConfigService.getUserConfig().pipe(map((userConfig:UserConfig)=>{
+      userConfig.maps.mapsConfiguration.origin = this.origin
+      userConfig.maps.mapsConfiguration.destination = this.destination
+      userConfig.maps.mapsConfiguration.mode = this.mode
+      userConfig.maps.mapsConfiguration.avoid = this.avoid
+      userConfig.maps.mapsConfiguration.measurements = this.measurements
+      return userConfig
+    })))
     this.dialogRef.close()
   }
   filteredOptions: Observable<string[]> | undefined;

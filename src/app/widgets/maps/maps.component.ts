@@ -4,6 +4,8 @@ import {MapsPopupComponent} from "./maps-popup/maps-popup.component";
 import {MapsConfiguration} from "../../interfaces/user-config";
 import {UserConfigService} from "../../services/user-config/user-config.service";
 import {DomSanitizer, SafeHtml, SafeResourceUrl} from "@angular/platform-browser";
+import {Observable} from "rxjs";
+import {SafePipe} from "./SafePipe";
 
 
 @Component({
@@ -14,14 +16,15 @@ import {DomSanitizer, SafeHtml, SafeResourceUrl} from "@angular/platform-browser
 export class MapsComponent implements OnInit {
   @ViewChild('googleMaps') iframe: ElementRef | undefined;
   constructor(private dialog: MatDialog, private userConfigService:UserConfigService, private sanitizer:DomSanitizer) { }
-  $data: MapsConfiguration | undefined
+  $data: Observable<MapsConfiguration> | undefined
   origin = "";//Leerzeichen mit plus
   destination = "";//Leerzeichen mit plus
   mode = "";//driving,walking etc.
   avoid = "";//tolls|ferries|highways
   units = "";//metric,imperial
-  api_base = "https://www.google.com/maps/embed/v1/directions?key=AIzaSyB58SKmmu04kFriAI8WWhi8fT1yvJoVw-c"
-  safeUrl: SafeResourceUrl | undefined
+  api_base = "https://www.google.com/maps/embed/v1/directions?key=AIzaSyB58SKmmu04kFriAI8WWhi8fT1yvJoVw-c&origin="
+  private safePipe:SafePipe = new SafePipe(this.sanitizer)
+  url:string = ""
   ngOnInit(): void {
     this.setMapsIframe()
   }
@@ -29,13 +32,13 @@ export class MapsComponent implements OnInit {
   public setMapsIframe(): void {
     this.$data = this.userConfigService.getMapsData()
     let avoids = "&avoid="
-    const data = this.$data
-    data.avoid.length==0?avoids = "":data.avoid.forEach(val=>{data.avoid.indexOf(val)==(data.avoid.length-1)?
-      avoids=avoids.concat(val):avoids=avoids.concat(val+"%7C")})
-    this.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
-      "https://www.google.com/maps/embed/v1/directions?key=AIzaSyB58SKmmu04kFriAI8WWhi8fT1yvJoVw-c&origin=" +
-      data.origin + "+Germany&destination=" + data.destination + "+Germany" + avoids + "&units=" +
-      data.measurements + "&mode=" + data.mode)
+    this.$data.subscribe(data => {
+      data.avoid.length==0?avoids = "":data.avoid.forEach(val=>{data.avoid.indexOf(val)==(data.avoid.length-1)?
+        avoids=avoids.concat(val):avoids=avoids.concat(val+"%7C")})
+      this.url = this.api_base +
+        data.origin + "+Germany&destination=" + data.destination + "+Germany" + avoids + "&units=" +
+        data.measurements + "&mode=" + data.mode
+    })
   }
 
   openDialog(): void {

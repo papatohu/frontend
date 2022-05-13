@@ -35,6 +35,7 @@ import { LoginComponent } from './authorization/login/login.component';
 import {RouterModule, Routes} from "@angular/router";
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { RegisterComponent } from './authorization/register/register.component';
+import {SafePipe} from "./widgets/maps/SafePipe";
 
 const routes: Routes = [
   {path: 'logon', component: LoginComponent},
@@ -61,7 +62,8 @@ const routes: Routes = [
     PublicTransportConfigureOriginComponent,
     LoginComponent,
     DashboardComponent,
-    RegisterComponent
+    RegisterComponent,
+    SafePipe
   ],
     imports: [
         BrowserModule,
