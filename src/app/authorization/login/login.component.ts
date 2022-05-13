@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup} from "@angular/forms";
 import {UserManagementService} from "../../services/user-management/user-management.service";
 import {Observable} from "rxjs";
 import {User} from "../../interfaces/user-config";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -12,9 +13,11 @@ import {User} from "../../interfaces/user-config";
 export class LoginComponent implements OnInit {
 
   form: FormGroup = this.formBuilder.group({});
-  constructor(private formBuilder:FormBuilder, private userManagementService:UserManagementService) { }
+  constructor(private formBuilder:FormBuilder, private userManagementService:UserManagementService, private router:Router) { }
 
   ngOnInit(): void {
+    if(localStorage.getItem("userId"))
+      this.router.navigate([""])
     this.form = this.formBuilder.group({
       username: [],
       password: []

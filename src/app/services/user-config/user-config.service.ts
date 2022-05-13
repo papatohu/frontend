@@ -55,6 +55,7 @@ export class UserConfigService {
       return
     }
     this.router.navigate(['/logon'])
+    return
   }
 
   public getUserGridLayoutMapping():Observable<KtdGridLayout> | undefined {
@@ -74,7 +75,7 @@ export class UserConfigService {
     return layout
   }
   private mapUserConfigToKtdGridLayoutAsync(userConfig:Observable<UserConfig>): Observable<KtdGridLayout> {
-    return userConfig.pipe(map((res:any)=>{
+    return userConfig?.pipe(map((res:any)=>{
       return this.mapUserConfigToKtdGridLayoutSync(res)
     }))
   }

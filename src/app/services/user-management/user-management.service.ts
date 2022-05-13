@@ -19,7 +19,11 @@ export class UserManagementService {
   loginUrl:string = "/login/"
   createNewUser(username:string, password:string){
     password = this.hashPassword(password)
-    this.http.put<any>(this.newUserUrl, this.getNewUserBody(username, password)).subscribe(res=>{localStorage.setItem("userId", res.id); this.userConfigService.setUserId(res.id);this.router.navigate([''])})
+    this.http.put<any>(this.newUserUrl, this.getNewUserBody(username, password)).subscribe(res=>{
+      localStorage.setItem("userId", res.id)
+      this.userConfigService.setUserId(res.id)
+      localStorage.setItem("sessionExpiry", (Date.now()+1000*60*30).toString())
+      this.router.navigate([''])})
   }
 
   hashPassword(password:string):string {
@@ -35,7 +39,9 @@ export class UserManagementService {
   }
 
   login(username: string, password: string) {
-    return this.http.get<User>(this.loginUrl + username + "/" + sha256(password)).pipe(map((res:any)=>{return res}))
+    const user = this.http.get<User>(this.loginUrl + username + "/" + sha256(password)).pipe(map((res:any)=>{return res}))
+    this.userConfigService.setUserName(user.pipe(map((res:any)=>{return res.username})))
+    return user
   }
 
   successfulLogin(userJson: User) {
@@ -48,6 +54,7 @@ export class UserManagementService {
 
   logout() {
     localStorage.removeItem("userId")
+    localStorage.removeItem("sessionExpiry")
     this.router.navigate(["/logon"])
   }
 }

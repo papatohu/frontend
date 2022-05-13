@@ -16,9 +16,11 @@ export class RegisterComponent implements OnInit {
   loading = false;
   submitted = false;
 
-  constructor(private formBuilder: FormBuilder, private userManagementService:UserManagementService) { }
+  constructor(private formBuilder: FormBuilder, private userManagementService:UserManagementService, private router:Router) { }
 
   ngOnInit() {
+    if(localStorage.getItem("userId"))
+      this.router.navigate([""])
     this.form = this.formBuilder.group({
       username: ['', Validators.required],
       password: ['', [Validators.required, Validators.pattern("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$")]]
