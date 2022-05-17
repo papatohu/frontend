@@ -7,6 +7,7 @@ import {Observable} from "rxjs";
   templateUrl: './weather.component.html',
   styleUrls: ['./weather.component.sass']
 })
+//this is the component where design patterns are being applied
 export class WeatherComponent implements OnInit {
 
 
