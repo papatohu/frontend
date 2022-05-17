@@ -1,1 +1,58 @@
 /* You can add global styles to this file, and also import other style files */
+
+//scrollbar ansich
+::-webkit-scrollbar
+  width: 15px
+
+//komplette scrollbar bis auf die corner, in der sich horizontale und vertikale scrollbar schneiden
+::-webkit-scrollbar-track
+  background-color: #F7BFBF
+
+//die buttons über die man auch scrollen kann
+::-webkit-scrollbar-button
+  background-color: #CCCCCC
+
+::-webkit-scrollbar-button:horizontal:decrement
+  background-image: url("/assets/images/arrow_left.png")
+  background-repeat: no-repeat
+  background-size: 100%
+  background-position-x: 2px
+  border-top-left-radius: 8px
+  border-bottom-left-radius: 8px
+
+::-webkit-scrollbar-button:horizontal:increment
+  background-image: url("/assets/images/arrow_right.png")
+  background-repeat: no-repeat
+  background-size: 100%
+  background-position-x: -2px
+  border-top-right-radius: 8px
+  border-bottom-right-radius: 8px
+
+::-webkit-scrollbar-button:vertical:decrement
+  background-image: url("/assets/images/arrow_up.png")
+  background-repeat: no-repeat
+  background-size: 100%
+  background-position-y: 4px
+  border-top-left-radius: 8px
+  border-top-right-radius: 8px
+
+::-webkit-scrollbar-button:vertical:increment
+  background-image: url("/assets/images/arrow_down.png")
+  background-repeat: no-repeat
+  background-size: 100%
+  background-position-y: -2px
+  border-bottom-left-radius: 8px
+  border-bottom-right-radius: 8px
+
+//die corner, in der sich horizontale und vertikale scrollbar schneiden
+::-webkit-scrollbar-corner
+  background-image: url("https://i.redd.it/43haeyd7iqo51.png")
+  background-size: 100%
+
+//die scrollbar, mit der man scrollen kann
+::-webkit-scrollbar-thumb
+  background-color: #F7BFBF
+
+//der Hintergrund der scrollbar
+::-webkit-scrollbar-track-piece
+  background-color: #CCCCCC
