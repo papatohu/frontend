@@ -1,27 +1,38 @@
 <div class="widget">
-  <table>
-    <tr>
-      <td class="widgetimgcolumn">
-        <img src="../../../../assets/images/cloud.svg" class="widgetImg" *ngIf="WeatherWidget$.weather == 'wolkig'"/>
-        <img src="../../../../assets/images/rain.svg" class="widgetImg" *ngIf="WeatherWidget$.weather == 'Regen'"/>
-      </td>
-      <td class="temperaturecolumn">
-        <h1>{{ WeatherWidget$.temperature }}°</h1>
-      </td>
-      <td class="weathercolumn">
-        <h1>{{ WeatherWidget$.weather }}</h1>
-      </td>
+  <table *ngIf="obsObsWeather | async as obsWeather">
+    <tr *ngIf="obsWeather | async as weather; else loading">
+      <ng-container *ngIf="!weather.weather.startsWith('!#\\') || setError(weather.weather)">
+        <td class="widgetimgcolumn">
+          <img src="../../../../assets/images/cloud.svg" class="widgetImg" *ngIf="weather.weather == 'Clouds'"/>
+          <img src="../../../../assets/images/rain.svg" class="widgetImg" *ngIf="weather.weather == 'Rain'"/>
+        </td>
+        <td class="temperaturecolumn">
+          <h1>{{ weather.temperature}}°</h1>
+        </td>
+        <td class="weathercolumn">
+          <h1>{{ weather.weather.toLowerCase() }}</h1>
+        </td>
+      </ng-container>
     </tr>
   </table>
-  <table>
-    <tr>
-      <td class="locationcolumn">
-        <h2>{{ WeatherWidget$.location }}</h2>
-      </td>
-      <td class="locationimgcolumn">
-        <img src="../../../../assets/images/location.svg" class="widgetLocationImg" (click)="getMyLocation()"/>
-      </td>
-    </tr>
+  <table *ngIf="obsObsCity | async as obsCity; else loading">
+    <ng-container *ngIf="instanceOfObs(obsObsCity)">
+      <tr *ngIf="obsCity | async as city; else loading">
+        <ng-container *ngIf="!city.startsWith('!#\\') || setError(city) else error">
+          <td class="locationcolumn">
+            <h2>{{ city }}</h2>
+          </td>
+          <td class="locationimgcolumn">
+            <img src="../../../../assets/images/location.svg" class="widgetLocationImg" />
+          </td>
+        </ng-container>
+      </tr>
+    </ng-container>
   </table>
-
+  <ng-template #loading>
+      <mat-spinner class="loading"></mat-spinner>
+  </ng-template>
+  <ng-template #error>
+    {{errorMessage!.split("!#\\")[1]}}
+  </ng-template>
 </div>
