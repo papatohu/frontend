@@ -5,6 +5,7 @@
         <td class="widgetimgcolumn">
           <img src="../../../../assets/images/cloud.svg" class="widgetImg" *ngIf="weather.weather == 'Clouds'"/>
           <img src="../../../../assets/images/rain.svg" class="widgetImg" *ngIf="weather.weather == 'Rain'"/>
+          <img src="../../../../assets/images/sun.svg" class="widgetImg" *ngIf="weather.weather == 'Clear'"/>
         </td>
         <td class="temperaturecolumn">
           <h1>{{ weather.temperature}}°</h1>

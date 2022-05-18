@@ -45,8 +45,8 @@ export class NasaComponent implements OnInit {
         if(loadedImage) {
           const width = (loadedImage as HTMLImageElement).width
           const height = (loadedImage as HTMLImageElement).height
-          var widgetwidth = document.getElementById("widget")!.offsetWidth * 0.9
-          var widgetheight = document.getElementById("widget")!.offsetHeight * 0.9
+          var widgetwidth = document.getElementById("widget")!.offsetWidth * 0.8
+          var widgetheight = document.getElementById("widget")!.offsetHeight * 0.8
           const ratio = widgetwidth/widgetheight;
           if(height > width/ratio) {
             const overlap = document.getElementById("nasaimage")!.offsetHeight - widgetheight
