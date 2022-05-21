@@ -64,14 +64,16 @@ export class UserConfigService {
 
   private mapUserConfigToKtdGridLayoutSync(userConfig:UserConfig): KtdGridLayout {
     let layout:KtdGridLayout = []
-    userConfig.weather==undefined?null:layout.push({id:"1",x:userConfig.weather.position.x,y:userConfig.weather.position.y,w:2,h:2})
-    userConfig.nasa==undefined?null:layout.push({id:"2",x:userConfig.nasa.position.x,y:userConfig.nasa.position.y,w:1.5,h:3})
-    userConfig.cartoon==undefined?null:layout.push({id:"3",x:userConfig.cartoon.position.x,y:userConfig.cartoon.position.y,w:2.5,h:4})
-    userConfig.maps==undefined?null:layout.push({id:"4",x:userConfig.maps.position.x,y:userConfig.maps.position.y,w:1.5,h:3.5})
-    userConfig.public_transport==undefined?null:layout.push({id:"5",x:userConfig.public_transport.position.x,y:userConfig.public_transport.position.y,w:2,h:4})
-    userConfig.stocks==undefined?null:layout.push({id:"6",x:userConfig.stocks.position.x,y:userConfig.stocks.position.y,w:1.5,h:4})
-    userConfig.text_of_the_day==undefined?null:layout.push({id:"7",x:userConfig.text_of_the_day.position.x,y:userConfig.text_of_the_day.position.y,w:1,h:1})
-    userConfig["daily-news"]==undefined?null:layout.push({id:"8",x:userConfig["daily-news"].position.x,y:userConfig["daily-news"].position.y,w:1,h:1})
+    userConfig.weather==undefined?null:layout.push({id:"1",x:userConfig.weather.position.x,y:userConfig.weather.position.y,w:3,h:4})
+    userConfig.nasa==undefined?null:layout.push({id:"2",x:userConfig.nasa.position.x,y:userConfig.nasa.position.y,w:3,h:4})
+    userConfig.cartoon==undefined?null:layout.push({id:"3",x:userConfig.cartoon.position.x,y:userConfig.cartoon.position.y,w:3,h:4})
+    userConfig.maps==undefined?null:layout.push({id:"4",x:userConfig.maps.position.x,y:userConfig.maps.position.y,w:3,h:4})
+    userConfig.public_transport==undefined?null:layout.push({id:"5",x:userConfig.public_transport.position.x,y:userConfig.public_transport.position.y,w:3,h:12})
+    userConfig.stocks==undefined?null:layout.push({id:"6",x:userConfig.stocks.position.x,y:userConfig.stocks.position.y,w:3,h:4})
+    userConfig.text_of_the_day==undefined?null:layout.push({id:"7",x:userConfig.text_of_the_day.position.x,y:userConfig.text_of_the_day.position.y,w:3,h:4})
+    userConfig["daily-news"]==undefined?null:layout.push({id:"8",x:userConfig["daily-news"].position.x,y:userConfig["daily-news"].position.y,w:3,h:4})
+    userConfig.chuck==undefined?null:layout.push({id:"9",x:userConfig.chuck.position.x,y:userConfig.chuck.position.y,w:3,h:4})
+    userConfig.tronaldDump==undefined?null:layout.push({id:"10",x:userConfig.tronaldDump.position.x,y:userConfig.tronaldDump.position.y,w:3,h:4})
     return layout
   }
   private mapUserConfigToKtdGridLayoutAsync(userConfig:Observable<UserConfig>): Observable<KtdGridLayout> {
@@ -128,6 +130,8 @@ export class UserConfigService {
       userConfig.stocks.position = {x: layout[5].x, y: layout[5].y}
       userConfig.text_of_the_day.position = {x: layout[6].x, y: layout[6].y}
       userConfig["daily-news"].position = {x: layout[7].x, y: layout[7].y}
+      userConfig.chuck.position = {x: layout[8].x, y: layout[8].y}
+      userConfig.tronaldDump.position = {x: layout[9].x, y: layout[9].y}
       this.userConfig = this.userConfig.pipe(map((newUserConfig:UserConfig)=>{return userConfig}))
       this.http.post<UserConfig>("/updateConfig/" + this.userId, userConfig).subscribe()
     })

@@ -63,4 +63,7 @@ export class StocksComponent implements OnInit {
     };
   }
 
+  configureStocks() {
+
+  }
 }

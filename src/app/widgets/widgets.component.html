@@ -1,7 +1,7 @@
-<ng-container *ngIf="layout2 !=undefined">
+<ng-container *ngIf="layout2 | async as layout3">
 <ktd-grid [cols]="cols"
           [rowHeight]="rowHeight"
-          [layout]="layout"
+          [layout]="layout3"
           (layoutUpdated)="postNewWidgetPositionsToBackend($event)">
   <ktd-grid-item *ngFor="let item of layout; trackBy:trackById" [id]="item.id"
                  [draggable]="true"

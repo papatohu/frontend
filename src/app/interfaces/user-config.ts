@@ -6,7 +6,9 @@ export interface UserConfig {
   public_transport:{position:Position, origin:string},
   stocks:{position:Position},
   text_of_the_day:{position:Position},
-  "daily-news":{position:Position}
+  "daily-news":{position:Position},
+  chuck: {position:Position},
+  tronaldDump: {position:Position}
 }
 export interface Position {
   x:number

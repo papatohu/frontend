@@ -1,14 +1,21 @@
 <div class="widget">
-<ng-container *ngIf="data$ | async as data; else loading">
-  <apx-chart
-    [series]="data.series"
-    [chart]="chartOptions.chart"
-    [xaxis]="chartOptions.xaxis"
-    [yaxis]="chartOptions.yaxis"
-    [title]="data.title"
-  ></apx-chart>
-</ng-container>
-<ng-template #loading>
-  <mat-spinner class="loading"></mat-spinner>
-</ng-template>
+  <!--
+
+  <div class="buttonContainer">
+    <button mat-raised-button color="accent" (click) = "configureStocks()">Configure stocks</button>
+  </div>
+
+  -->
+  <ng-container *ngIf="data$ | async as data; else loading">
+    <apx-chart
+      [series]="data.series"
+      [chart]="chartOptions.chart"
+      [xaxis]="chartOptions.xaxis"
+      [yaxis]="chartOptions.yaxis"
+      [title]="data.title"
+    ></apx-chart>
+  </ng-container>
+  <ng-template #loading>
+    <mat-spinner class="loading"></mat-spinner>
+  </ng-template>
 </div>

@@ -2,25 +2,25 @@ export class UserUtils {
   static newUserBody = {
     "weather": {
       "position": {
-        "x": 4.5,
-        "y": 8
+        "x": 3,
+        "y": 5
       }
     },
     "nasa": {
-      "position": {
-        "x": 1.5,
-        "y": 0
-      }
-    },
-    "cartoon": {
       "position": {
         "x": 3,
         "y": 0
       }
     },
+    "cartoon": {
+      "position": {
+        "x": 6,
+        "y": 0
+      }
+    },
     "maps": {
       "position": {
-        "x": 4.5,
+        "x": 9,
         "y": 0
       },
       "mapsConfiguration": {
@@ -43,20 +43,32 @@ export class UserUtils {
     },
     "stocks": {
       "position": {
-        "x": 1.5,
+        "x": 3,
         "y": 4
       }
     },
     "text_of_the_day": {
       "position": {
-        "x": 3,
-        "y": 8
+        "x": 6,
+        "y": 4
       }
     },
     "daily-news": {
       "position": {
-        "x": 4.5,
+        "x": 9,
         "y": 4
+      }
+    },
+    "chuck": {
+      "position": {
+        "x": 6,
+        "y": 5
+      }
+    },
+    "tronaldDump": {
+      "position": {
+        "x": 9,
+        "y": 5
       }
     }
   }
